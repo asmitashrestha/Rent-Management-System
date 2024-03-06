@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Services from "./Services";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [showLink, setShowLink] = useState(false);
-  const textOne =''
   const textToShow =
     "Collecting house rent data: Insights for informed housing decisions ahead.";
 
@@ -41,6 +42,8 @@ const Home = () => {
           </div>
         )}
       </div>
+      <Services/>
+      <Footer/>
     </div>
   );
 };
