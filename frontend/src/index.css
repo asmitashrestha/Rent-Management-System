@@ -14,3 +14,7 @@
 .animate-color-change {
   animation: color-change 5s infinite;
 }
+
+body{
+  background-color: #e8eaec;
+}
