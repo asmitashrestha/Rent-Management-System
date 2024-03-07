@@ -8,6 +8,9 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+      },
+      fId: {
+        type: Sequelize.INTEGER,
         references: {
           model: "Floors",
           key: "id",

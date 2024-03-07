@@ -8,15 +8,15 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+      },
+      b_id: {
+        type: Sequelize.INTEGER,
         references: {
           model: "Bills",
           key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
-      },
-      pid: {
-        type: Sequelize.INTEGER,
       },
       payer: {
         type: Sequelize.STRING,

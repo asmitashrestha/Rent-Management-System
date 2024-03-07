@@ -8,6 +8,10 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+      },
+      bId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: "Buildings",
           key: "id",

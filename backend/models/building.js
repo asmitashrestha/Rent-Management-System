@@ -9,12 +9,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Building.belongsTo(models.User, { foreignKey: "id" });
-      Building.hasMany(models.Floor, { foreignKey: "id" });
+      Building.belongsTo(models.User, { foreignKey: "userId" });
+      Building.hasMany(models.Floor, { foreignKey: "bId" });
     }
   }
   Building.init(
     {
+      userId: DataTypes.NUMBER,
       floors: DataTypes.NUMBER,
     },
     {

@@ -10,15 +10,16 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Customer.belongsTo(models.Floor, {
-        foreignKey: "id",
+        foreignKey: "fId",
       });
       Customer.hasOne(models.Bill, {
-        foreignKey: "id",
+        foreignKey: "cId",
       });
     }
   }
   Customer.init(
     {
+      fid: DataTypes.NUMBER,
       customerName: DataTypes.STRING,
       floorNumber: DataTypes.NUMBER,
       previousBalance: DataTypes.NUMBER,

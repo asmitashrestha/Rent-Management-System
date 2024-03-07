@@ -9,14 +9,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Floor.belongsTo(models.Building, { foreignKey: "bid" });
+      Floor.belongsTo(models.Building, { foreignKey: "bId" });
       Floor.hasOne(models.Customer, {
-        foreignKey: "floorNumber",
+        foreignKey: "fId",
       });
     }
   }
   Floor.init(
     {
+      bId: DataTypes.NUMBER,
       room: DataTypes.NUMBER,
       pricePerRoom: DataTypes.NUMBER,
     },

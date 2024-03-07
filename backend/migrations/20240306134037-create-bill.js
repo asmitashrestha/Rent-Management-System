@@ -8,16 +8,16 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+      },
+      cId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
         references: {
           model: "Customers",
           key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
-      },
-      cid: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
       },
       customerName: {
         type: Sequelize.STRING,
