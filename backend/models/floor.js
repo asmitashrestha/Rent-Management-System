@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   Floor.init(
     {
       bId: DataTypes.NUMBER,
-      room: DataTypes.NUMBER,
-      pricePerRoom: DataTypes.NUMBER,
+      floorNumber: DataTypes.NUMBER,
+      price: DataTypes.NUMBER,
     },
     {
       sequelize,

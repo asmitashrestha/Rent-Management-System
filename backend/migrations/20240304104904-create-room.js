@@ -2,30 +2,18 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Floors", {
+    await queryInterface.createTable("Rooms", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      bId: {
+      fId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: "Buildings",
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
-      },
-      floorNumber: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
       },
       price: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+        type: Sequelize.FLOAT,
       },
       createdAt: {
         allowNull: false,
@@ -38,6 +26,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Floors");
+    await queryInterface.dropTable("Rooms");
   },
 };
