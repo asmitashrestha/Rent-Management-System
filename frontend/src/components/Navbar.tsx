@@ -25,7 +25,7 @@ const Navbar = () => {
           <Link to={"/"} className="left-3 relative top-7 font-bold font-serif text-2xl hover:text-blue-800">Rent<span className="text-blue-800 hover:text-gray-900">Track</span></Link>
         </div>
         <div className="font-semibold text-xl font-serif relative right-5 top-7 hover:text-gray-800">
-          <Link to={'/rent-data'}>Rent Collection</Link>
+          <Link to={'/rent-data'} style={{ color: getColor() }} className="mr-9">Rent Collection</Link>
           <Link to={"/services"} style={{ color: getColor() }}>Services</Link>
           <Link to={"/login"} className="ml-10" style={{ color: getColor() }}>Login</Link>
         </div>
