@@ -17,3 +17,25 @@ export const getFloors = async (bId: number | string) => {
     where: { bId: bId },
   });
 };
+
+export const getFloorById = async (id: number | string) => {
+  return await db.Floor.findOne({
+    where: { id: id },
+  });
+};
+
+export const putFloor = async (
+  bId: string | number,
+  id: string | number,
+  price: number
+) => {
+  return await db.Floor.update(
+    { price: price },
+    {
+      where: {
+        bId: bId,
+        id: id,
+      },
+    }
+  );
+};
