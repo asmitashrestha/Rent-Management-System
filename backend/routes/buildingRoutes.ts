@@ -1,8 +1,14 @@
 import express from "express";
-import { addBuilding, getBuilding } from "../controllers/buildingController";
+import {
+  addBuilding,
+  getBuilding,
+  updateBuilding,
+} from "../controllers/buildingController";
+import verifyToken from "../validators/verifyToken";
 const router = express.Router();
 
-router.post("/", addBuilding);
-router.get("/", getBuilding);
+router.post("/", verifyToken, addBuilding);
+router.get("/", verifyToken, getBuilding);
+router.put("/:id", verifyToken, updateBuilding);
 
 export default router;

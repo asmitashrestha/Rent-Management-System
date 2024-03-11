@@ -10,3 +10,19 @@ export const registration = async (userId: number | string, floors: number) => {
 export const fetchBuilding = async (userId: number | string) => {
   return await db.Building.findAll({ where: { userId: userId } });
 };
+
+export const putBuilding = async (
+  userId: number | string,
+  id: number | string,
+  floors: number
+) => {
+  return await db.Building.update(
+    { floors: floors },
+    {
+      where: {
+        userId: userId,
+        id: id,
+      },
+    }
+  );
+};
