@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import {
+  deleteBuilding,
   fetchBuilding,
   putBuilding,
   registration,
@@ -36,6 +37,19 @@ export const updateBuilding = async (req: Request, res: Response) => {
     const response = await putBuilding(userId, id, floors);
     if (response) {
       res.status(200).json({ message: "Update successful" });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+export const removeBuilding = async (req: Request, res: Response) => {
+  const userId = req.userId;
+  const { id } = req.params;
+  try {
+    const response = await deleteBuilding(userId, id);
+    if (!response) {
+      return res.status(400).json({ message: "Something went wrong" });
     }
   } catch (error) {
     return res.status(500).json({ message: "Something went wrong" });

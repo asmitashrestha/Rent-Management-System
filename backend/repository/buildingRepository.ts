@@ -26,3 +26,15 @@ export const putBuilding = async (
     }
   );
 };
+
+export const deleteBuilding = async (
+  userId: string | number,
+  id: string | number
+) => {
+  return await db.Building.destroy({
+    where: {
+      userId: userId,
+      id: id,
+    },
+  });
+};
