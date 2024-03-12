@@ -1,10 +1,11 @@
+// BillDetails.js
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const BillDetails = () => {
   const navigate = useNavigate()
   const handleClick = () =>{
-    navigate('/floor-details')
+    navigate('/bill-details')
   }
   return (
     <div>
@@ -18,20 +19,20 @@ const BillDetails = () => {
                 type="text"
                 value={"asmita"}
                 placeholder="Enter name..."
-                className="outline-none p-2 rounded-md bg-stone-900 text-cyan-100 md:ml-2 font-semibold flex-grow"
+                className="outline-none p-2 rounded-md bg-stone-900 text-cyan-100  font-semibold flex-grow"
               />
             </div>
             <div className='mb-4 flex flex-wrap items-center justify-between'>
-              <label className=" font-semibold font-serif text-amber-900 mr-4 mb-2">Floor number :</label>
+              <label className=" font-semibold font-serif text-amber-900 mr-4 mb-2">Floor rent :</label>
               <input
                 type="number"
                 value={"1200"}
                 placeholder="Enter floor number..."
-                className="outline-none md:ml-7 p-2 rounded-md bg-stone-900 text-cyan-100 font-semibold flex-grow"
+                className="outline-none md:ml-12 p-2 rounded-md bg-stone-900 text-cyan-100 font-semibold flex-grow"
               />
             </div>
             <div className='mb-4 flex flex-wrap items-center justify-between'>
-              <label className=" font-semibold font-serif text-amber-900 md:mr-4 mb-2">Previous Amount :</label>
+              <label className=" font-semibold font-serif text-amber-900  mb-2">Electricity Charges:</label>
               <input
                 type="number"
                 value={"1200"}
@@ -40,21 +41,21 @@ const BillDetails = () => {
               />
             </div>
             <div className='mb-4 flex flex-wrap items-center justify-between'>
-              <label className=" font-semibold font-serif text-amber-900 mr-4 mb-2">Current Amount :</label>
+              <label className=" font-semibold font-serif text-amber-900 mr-4 mb-2">Water Charges :</label>
               <input
                 type="number"
                 value={"1200"}
                 placeholder="Enter current bill amount..."
-                className="outline-none p-2 rounded-md bg-stone-900 text-cyan-100 md:ml-2 font-semibold flex-grow"
+                className="outline-none p-2 rounded-md bg-stone-900 text-cyan-100 md:ml-3 font-semibold flex-grow"
               />
             </div>
             <div className='mb-4 flex flex-wrap items-center justify-between'>
-              <label className=" font-semibold font-serif text-amber-900 md:mr-4 mb-2">Paid Amount :</label>
+              <label className=" font-semibold font-serif text-amber-900 md:mr-4 mb-2">Others :</label>
               <input
                 type="number"
                 value={"1200"}
                 placeholder="Enter paid amount..."
-                className="outline-none p-2 rounded-md bg-stone-900 text-cyan-100 md:ml-9 font-semibold flex-grow"
+                className="outline-none p-2 rounded-md bg-stone-900 text-cyan-100 md:ml-20 font-semibold flex-grow"
               />
             </div>
             <div className='mb-4 flex flex-wrap items-center justify-between'>
@@ -63,7 +64,16 @@ const BillDetails = () => {
                 type="number"
                 value={"1200"}
                 placeholder="Enter remaining amount..."
-                className="outline-none p-2 rounded-md bg-stone-900 text-cyan-100 md:ml-8 font-semibold flex-grow"
+                className="outline-none p-2 rounded-md bg-stone-900 text-cyan-100 md:ml-6 font-semibold flex-grow"
+              />
+            </div>
+            <div className='mb-4 flex flex-wrap items-center justify-between'>
+              <label className=" font-semibold font-serif text-amber-900 md:mr-4 mb-2">Total Amount :</label>
+              <input
+                type="number"
+                value={"1200"}
+                placeholder="Enter remaining amount..."
+                className="outline-none p-2 rounded-md bg-stone-900 text-cyan-100 md:ml-6 font-semibold flex-grow"
               />
             </div>
             <button type="submit" className="relative top-2 left-[95px] md:left-[145px] px-5 py-3 bg-amber-700 text-white rounded-md hover:bg-amber-950">
