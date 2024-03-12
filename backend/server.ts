@@ -7,6 +7,8 @@ import bodyParser from "body-parser";
 import userRoute from "./routes/userRoutes";
 import buildingRoute from "./routes/buildingRoutes";
 import floorRoute from "./routes/floorRoutes";
+import customerRoute from "./routes/customerRoutes";
+import billRoute from "./routes/billRoutes";
 
 const app = express();
 app.use(
@@ -21,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/users", userRoute);
 app.use("/building", buildingRoute);
 app.use("/floor", floorRoute);
+app.use("/customer", customerRoute);
+app.use("/bills", billRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server Started In Port: ${process.env.PORT}`);
