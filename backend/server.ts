@@ -9,6 +9,7 @@ import buildingRoute from "./routes/buildingRoutes";
 import floorRoute from "./routes/floorRoutes";
 import customerRoute from "./routes/customerRoutes";
 import billRoute from "./routes/billRoutes";
+import paymentRoute from "./routes/paymentRoute";
 
 const app = express();
 app.use(
@@ -25,6 +26,7 @@ app.use("/building", buildingRoute);
 app.use("/floor", floorRoute);
 app.use("/customer", customerRoute);
 app.use("/bills", billRoute);
+app.use("/payment", paymentRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server Started In Port: ${process.env.PORT}`);
