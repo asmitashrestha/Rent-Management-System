@@ -24,16 +24,13 @@ module.exports = {
       floorNumber: {
         type: Sequelize.INTEGER,
       },
-      previousBalance: {
-        type: Sequelize.INTEGER,
-      },
-      currentBillAmount: {
+      billAmount: {
         type: Sequelize.INTEGER,
       },
       paidAmount: {
         type: Sequelize.INTEGER,
       },
-      remainingBalance: {
+      remainingAmount: {
         type: Sequelize.INTEGER,
       },
       createdAt: {

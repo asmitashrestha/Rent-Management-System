@@ -15,17 +15,19 @@ module.exports = (sequelize, DataTypes) => {
       Customer.hasOne(models.Bill, {
         foreignKey: "cId",
       });
+      Customer.hasMany(models.Payment, {
+        foreignKey: "c_id",
+      });
     }
   }
   Customer.init(
     {
-      fid: DataTypes.NUMBER,
+      fId: DataTypes.NUMBER,
       customerName: DataTypes.STRING,
       floorNumber: DataTypes.NUMBER,
-      previousBalance: DataTypes.NUMBER,
-      currentBillAmount: DataTypes.NUMBER,
+      billAmount: DataTypes.NUMBER,
       paidAmount: DataTypes.NUMBER,
-      remainingBalance: DataTypes.NUMBER,
+      remainingAmount: DataTypes.NUMBER,
     },
     {
       sequelize,

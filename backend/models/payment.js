@@ -9,15 +9,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Payment.belongsTo(models.Bill, {
-        foreignKey: "b_id",
+      Payment.belongsTo(models.Customer, {
+        foreignKey: "c_id",
       });
     }
   }
   Payment.init(
     {
-      b_id: DataTypes.NUMBER,
-      payer: DataTypes.STRING,
+      c_id: DataTypes.NUMBER,
       paidAmount: DataTypes.NUMBER,
     },
     {

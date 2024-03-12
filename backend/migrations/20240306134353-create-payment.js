@@ -9,17 +9,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      b_id: {
+      c_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Bills",
+          model: "Customers",
           key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
-      },
-      payer: {
-        type: Sequelize.STRING,
       },
       paidAmount: {
         type: Sequelize.INTEGER,
