@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes color-change {
+  0% { color: #FF0000; }
+  20% { color: #FFA500; }
+  40% { color: #FFFF00; }
+  60% { color: #008000; }
+  80% { color: #0000FF; }
+  100% { color: #800080; }
+}
+
+.animate-color-change {
+  animation: color-change 5s infinite;
+}
+
+body{
+  background-color: #e8eaec;
+}
+
