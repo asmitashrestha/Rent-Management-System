@@ -11,6 +11,7 @@ import BillDetails from "./components/BillDetails";
 
 const App = () => {
   return (
+
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -26,5 +27,6 @@ const App = () => {
     </div>
   );
 };
+
 
 export default App;
