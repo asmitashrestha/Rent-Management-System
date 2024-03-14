@@ -25,7 +25,7 @@ app.use("/users", userRoute);
 app.use("/building", buildingRoute);
 app.use("/floor", floorRoute);
 app.use("/customer", customerRoute);
-app.use("/bills", billRoute);
+app.use("/bill", billRoute);
 app.use("/payment", paymentRoute);
 
 app.listen(process.env.PORT, () => {

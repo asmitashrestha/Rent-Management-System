@@ -39,3 +39,7 @@ export const putFloor = async (
     }
   );
 };
+
+export const putEmpty = async (id: string | number) => {
+  return await db.Floor.update({ status: "empty" }, { where: { id: id } });
+};

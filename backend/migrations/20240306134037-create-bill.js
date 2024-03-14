@@ -24,24 +24,31 @@ module.exports = {
       },
       floorRent: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       electricityCharges: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       waterCharges: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       internetCharges: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       others: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       previousAmount: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       total: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       createdAt: {
         allowNull: false,

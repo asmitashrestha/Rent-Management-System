@@ -3,6 +3,7 @@ import {
   getFloorById,
   getFloors,
   postFloor,
+  putEmpty,
   putFloor,
 } from "../repository/floorRepository";
 import { fetchBuilding } from "../repository/buildingRepository";
@@ -73,6 +74,19 @@ export const updateFloor = async (req: Request, res: Response) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
     return res.status(200).json({ message: "Floor updated successfully" });
+  } catch (error) {
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+export const clearRoom = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const response = await putEmpty(id);
+    if (!response) {
+      return res.status(400).json({ message: "Something went wrong" });
+    }
+    return res.status(200).json({ message: "Floor has become empty" });
   } catch (error) {
     return res.status(500).json({ message: "Something went wrong" });
   }

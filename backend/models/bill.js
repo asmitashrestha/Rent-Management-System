@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Bill.belongsTo(models.Customer, {
-        foreignKey: "cid",
+        foreignKey: "cId",
       });
       Bill.hasOne(models.Payment, {
         foreignKey: "b_id",

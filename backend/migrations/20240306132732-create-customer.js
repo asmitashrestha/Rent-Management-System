@@ -26,12 +26,15 @@ module.exports = {
       },
       billAmount: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       paidAmount: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       remainingAmount: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       createdAt: {
         allowNull: false,
