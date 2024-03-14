@@ -11,7 +11,6 @@ import BillDetails from "./components/BillDetails";
 
 const App = () => {
   return (
-
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -21,12 +20,11 @@ const App = () => {
         <Route path="/rent-data" element={<Rentdata />} />
         <Route path="/building-details" element={<BuildingDetails />} />
         <Route path="/floor-details" element={<FloorDetails />} />
-        <Route path="/customer-details" element={<CustomerDetails/>} />
-        <Route path="/bill-details" element={<BillDetails/>} />
+        <Route path="/customer-details" element={<CustomerDetails />} />
+        <Route path="/bill-details" element={<BillDetails />} />
       </Routes>
     </div>
   );
 };
-
 
 export default App;
