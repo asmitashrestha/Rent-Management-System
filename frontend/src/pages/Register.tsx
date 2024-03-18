@@ -26,13 +26,12 @@ const Register = () => {
   const mutation = useMutation(apiClient.register, {
     onSuccess: async () => {
       await queryClient.invalidateQueries("validateToken");
+      navigate('/')
       toast.success("Registration successful", {
         position: "top-right",
         autoClose: 500,
         hideProgressBar: false,
-      });
-      
-      
+      }); 
     },
 
     onError: (error: Error) => {
@@ -55,7 +54,7 @@ const Register = () => {
           <div className="flex flex-col md:flex-row p-1 bg-slate-100  shadow-teal-950 shadow-2xl rounded">
             <div className="md:w-1/2 p-8 md:p-5">
               <h1 className="font-bold text-2xl text-blue-950 py-4">
-                Regsiter
+                Register
               </h1>
             </div>
             <form action="" method="post" onSubmit={onSubmit}>
@@ -117,8 +116,8 @@ const Register = () => {
                       ...register("password", {
                         required: "This field is required",
                         minLength:{
-                          value:6,
-                          message:"Password must be 6 characters",
+                          value:8,
+                          message:"Password must be 8 characters",
                         }
                       })
                     }
