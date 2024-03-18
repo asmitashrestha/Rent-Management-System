@@ -8,20 +8,30 @@ import BuildingDetails from "./components/BuildingDetails";
 import FloorDetails from "./components/FloorDetails";
 import CustomerDetails from "./components/CustomerDetails";
 import BillDetails from "./components/BillDetails";
+import Floor from "./components/Floor";
 
 const App = () => {
+  function handleClick(): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <div>
       <Routes>
+        {/* public routes */}
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/services" element={<Services />} />
+
+        {/* Private Routes */}
         <Route path="/rent-data" element={<Rentdata />} />
         <Route path="/building-details" element={<BuildingDetails />} />
-        <Route path="/floor-details" element={<FloorDetails />} />
+        <Route path="/floor-details/:id" element={<FloorDetails />} />
         <Route path="/customer-details" element={<CustomerDetails />} />
         <Route path="/bill-details" element={<BillDetails />} />
+        <Route path="/floor-collection" element={<Floor number={1} onClick={handleClick} />
+}/>
       </Routes>
     </div>
   );

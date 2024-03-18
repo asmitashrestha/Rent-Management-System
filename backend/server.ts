@@ -29,5 +29,5 @@ app.use("/bill", billRoute);
 app.use("/payment", paymentRoute);
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server Started In Port: ${process.env.PORT}`);
+  console.log(`Server Started In Port: ${process.env.PORT} `);
 });
