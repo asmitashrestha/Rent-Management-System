@@ -7,10 +7,11 @@ import Rentdata from "./pages/Rentdata";
 import BuildingDetails from "./components/BuildingDetails";
 import FloorDetails from "./components/FloorDetails";
 import CustomerDetails from "./components/CustomerDetails";
-import BillDetails from "./components/BillDetails";
+import BillForm from "./components/BillForm";
 import Floor from "./components/Floor";
-
+import Payment from "./components/Payment";
 import EmptyFloorCard from "./components/floors/EmptyFloorCard";
+import BillDetails from "./components/BillDetails";
 
 const App = () => {
   function handleClick(): void {
@@ -31,12 +32,10 @@ const App = () => {
         <Route path="/building-details" element={<BuildingDetails />} />
         <Route path="/floor-details/:id" element={<FloorDetails />} />
         <Route path="/customer-details" element={<CustomerDetails />} />
-        <Route path="/bill-details" element={<BillDetails />} />
-        <Route path="/test" element={<EmptyFloorCard />} />
-        <Route
-          path="/floor-collection"
-          element={<Floor number={1} onClick={handleClick} />}
-        />
+        <Route path="/bill-details" element={<BillForm />} />
+        <Route path="/floor-collection" element={<Floor number={1} onClick={handleClick} />}/>
+        <Route path="/payment" element={<Payment/>}/>
+        <Route path="/bill-status" element={<BillDetails/>}/>
       </Routes>
     </div>
   );
