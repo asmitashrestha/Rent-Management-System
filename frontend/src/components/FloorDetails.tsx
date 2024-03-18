@@ -14,7 +14,7 @@ const FloorDetails = () => {
     event.preventDefault();
     // Now you can directly access floorsArray to get the number of floors
     console.log(floorsArray); // Print the array of floors to the console
-    navigate('/');
+    navigate('/customer-details');
   };
 
   return (
@@ -22,7 +22,7 @@ const FloorDetails = () => {
       <form className="text-center" onSubmit={handleSubmit}>
         <div className="bg-stone-300 p-16 rounded-sm shadow-amber-800 shadow-2xl">
           <div>
-            <label className="block font-semibold font-serif text-amber-900 mb-5">Enter price for each floor?</label>
+            <label className="block font-semibold font-serif text-amber-900 mb-5">Enter price for floor ?</label>
             <input
               type="number"
               defaultValue={floorsArray[0] || ''} // Use defaultValue instead of value
@@ -32,7 +32,7 @@ const FloorDetails = () => {
             />
           </div>
           <button type="submit" className="relative top-7 left-[105px] px-5 py-3 bg-amber-700 text-white rounded-md hover:bg-amber-950">
-            Save
+            Submit
           </button>
         </div>
       </form>

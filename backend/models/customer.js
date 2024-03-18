@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
+  
   Customer.init(
     {
       fId: DataTypes.NUMBER,

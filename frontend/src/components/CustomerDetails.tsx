@@ -1,16 +1,43 @@
-// CustomerDetails.js
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CustomerDetails = () => {
-  const navigate = useNavigate()
-  const handleClick = () =>{
-    navigate('/bill-details')
-  }
+  const navigate = useNavigate();
+  const [showForm, setShowForm] = useState(false);
+
+  const handleAddCustomer = () => {
+    setShowForm(true);
+  };
+
+  const handleSubmit = (event:any) => {
+    event.preventDefault();
+    // Your form submission logic here
+    navigate('/bill-details');
+  };
+
+ 
+
   return (
     <div>
       <div className="bg-img2 h-screen bg-cover bg-center flex justify-center items-center">
-        <form className="text-center " onSubmit={handleClick}>
+        {!showForm ? (
+          <div>
+            <p className="font-bold text-3xl text-green-950 font-serif p-4">Customer Details</p>
+            <p className='text-center font-bold text-2xl'>This floor is currently empty.</p>
+            <div className='flex text-center justify-center'>
+               <button
+              onClick={handleAddCustomer}
+              className="px-4 py-3 bg-amber-700 text-white rounded-md mt-4 hover:bg-amber-950 font-bold text-lg "
+            >
+              Add Customer
+            </button>
+            </div>
+           
+          </div>
+        ) : (
+          <div className=" h-screen bg-cover bg-center flex justify-center items-center">
+
+          <form className="text-center " onSubmit={handleSubmit}>
           <p className='font-bold text-3xl text-green-950 font-serif p-4'>Customer Details</p>
           <div className="bg-stone-300 py-8 px-20 rounded-lg shadow-stone-900 shadow-2xl">
             <div className='mb-4 flex flex-wrap items-center justify-between'>
@@ -72,9 +99,11 @@ const CustomerDetails = () => {
             </button>
           </div>
         </form>
+        </div>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CustomerDetails
+export default CustomerDetails;
