@@ -10,6 +10,8 @@ import CustomerDetails from "./components/CustomerDetails";
 import BillDetails from "./components/BillDetails";
 import Floor from "./components/Floor";
 
+import EmptyFloorCard from "./components/floors/EmptyFloorCard";
+
 const App = () => {
   function handleClick(): void {
     throw new Error("Function not implemented.");
@@ -30,8 +32,11 @@ const App = () => {
         <Route path="/floor-details/:id" element={<FloorDetails />} />
         <Route path="/customer-details" element={<CustomerDetails />} />
         <Route path="/bill-details" element={<BillDetails />} />
-        <Route path="/floor-collection" element={<Floor number={1} onClick={handleClick} />
-}/>
+        <Route path="/test" element={<EmptyFloorCard />} />
+        <Route
+          path="/floor-collection"
+          element={<Floor number={1} onClick={handleClick} />}
+        />
       </Routes>
     </div>
   );
