@@ -11,6 +11,9 @@ import BillDetails from "./components/BillDetails";
 import Floor from "./components/Floor";
 
 import EmptyFloorCard from "./components/floors/EmptyFloorCard";
+import CustomerComponent from "./components/CustomerComponent";
+import FloorHeader from "./components/floors/FloorHeader";
+import FloorPage from "./components/floors/FloorPage";
 
 const App = () => {
   function handleClick(): void {
@@ -32,7 +35,7 @@ const App = () => {
         <Route path="/floor-details/:id" element={<FloorDetails />} />
         <Route path="/customer-details" element={<CustomerDetails />} />
         <Route path="/bill-details" element={<BillDetails />} />
-        <Route path="/test" element={<EmptyFloorCard />} />
+        <Route path="/test" element={<FloorPage />} />
         <Route
           path="/floor-collection"
           element={<Floor number={1} onClick={handleClick} />}
