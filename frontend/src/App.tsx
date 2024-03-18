@@ -11,6 +11,9 @@ import BillForm from "./components/BillForm";
 import Floor from "./components/Floor";
 import Payment from "./components/Payment";
 import EmptyFloorCard from "./components/floors/EmptyFloorCard";
+import CustomerComponent from "./components/CustomerComponent";
+import FloorHeader from "./components/floors/FloorHeader";
+import FloorPage from "./components/floors/FloorPage";
 import BillDetails from "./components/BillDetails";
 
 const App = () => {

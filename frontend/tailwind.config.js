@@ -9,6 +9,8 @@ export default {
       },
       colors: {
         "primary-bg": "#E4E3EB",
+        "fb-blue": "#0071FF",
+        coffee: "#6F4E37",
       },
     },
   },
