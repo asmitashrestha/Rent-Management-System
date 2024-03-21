@@ -15,6 +15,8 @@ import CustomerComponent from "./components/CustomerComponent";
 import FloorHeader from "./components/floors/FloorHeader";
 import FloorPage from "./components/floors/FloorPage";
 import BillDetails from "./components/BillDetails";
+import MyFloor from "./pages/MyFloor";
+import FloorSummary from "./pages/FloorSummary";
 
 const App = () => {
   function handleClick(): void {
@@ -39,6 +41,9 @@ const App = () => {
         <Route path="/floor-collection" element={<Floor number={1} onClick={handleClick} />}/>
         <Route path="/payment" element={<Payment/>}/>
         <Route path="/bill-status" element={<BillDetails/>}/>
+        <Route path="/test" element={<FloorPage/>}/>
+        <Route path="/my-floor" element={<MyFloor/>}/>
+        <Route path="/floor-summary/:id" element={<FloorSummary/>}/>
       </Routes>
     </div>
   );

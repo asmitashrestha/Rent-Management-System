@@ -77,6 +77,25 @@ export const addBuilding = async (userId: number, floors: number) => {
   }
 };
 
+export const fetchbuilding = async () => {
+  try {
+    const response = await fetch("http://localhost:8000/building", {
+      method: "GET",
+      credentials: "include",
+    });
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Error while fetching the building details", errorText);
+      throw new Error("Failed to fetch building details");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error: any) {
+    console.error("Error fetching the building details", error.message);
+    throw error;
+  }
+};
+
 export const addFloors = async (
   userId: number,
   floorNumber: number,
@@ -95,33 +114,44 @@ export const addFloors = async (
         price: price,
       }),
     });
+    console.log("response", response);
+
+    console.log("floornumber ", floorNumber);
     const data = await response.json();
+
     if (!response.ok) {
       throw new Error("Something went wrong");
     }
 
-    return data.message;
+    return data;
   } catch (error: any) {
     console.error("Errror adding floor", error.messsage);
     throw new Error(error.message);
   }
 };
 
-export const fetchbuilding = async () => {
+export const fetchFloorById = async (floorNumber: number) => {
+  console.log('helo',floorNumber);
+  
   try {
-    const response = await fetch("http://localhost:8000/building", {
+    const response = await fetch(`http://localhost:8000/floor/${floorNumber}`, {
       method: "GET",
       credentials: "include",
     });
+    
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("Error while fetching the building details", errorText);
-      throw new Error("Failed to fetch building details");
+      console.error("Error while fetching the floor details", errorText);
+      throw new Error("Failed to fetch floor details");
     }
-    const data = await response.json();
-    return data;
-  } catch (error: any) {
-    console.error("Error ftching the building details", error.message);
-    throw error;
+    console.log('res',response);
+    
+    const data = await response.json()
+    console.log("data",data);
+    
+    return data
+  } catch (error:any) {
+    console.error("Error fetching the floor details",error.message)
+    throw error
   }
 };
