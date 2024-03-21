@@ -7,7 +7,7 @@ import {
 import verifyToken from "../validators/verifyToken";
 const router = express.Router();
 
-router.post("/", verifyToken, addFloors);
+router.post("/:floorNumber", verifyToken, addFloors);
 router.get("/:floorNumber", verifyToken, fetchFloor);
 router.put("/:id", verifyToken, updateFloor);
 
