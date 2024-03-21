@@ -2,7 +2,7 @@ import db from "../models";
 
 export const postFloor = async (
   bId: string | number,
-  floorNumber: number,
+  floorNumber: number | string,
   price: number
 ) => {
   return await db.Floor.create({
@@ -42,4 +42,8 @@ export const putFloor = async (
 
 export const putEmpty = async (id: string | number) => {
   return await db.Floor.update({ status: "empty" }, { where: { id: id } });
+};
+
+export const getFloorByNumber = async (floorNumber: number | string) => {
+  return await db.Floor.findOne({ where: { floorNumber: floorNumber } });
 };

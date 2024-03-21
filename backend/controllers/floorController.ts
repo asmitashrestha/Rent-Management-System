@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import {
   getFloorById,
+  getFloorByNumber,
   getFloors,
   postFloor,
   putEmpty,
@@ -10,7 +11,8 @@ import { fetchBuilding } from "../repository/buildingRepository";
 
 export const addFloors = async (req: Request, res: Response) => {
   const userId = req.userId;
-  const { floorNumber, price } = req.body;
+  const { floorNumber } = req.params;
+  const { price } = req.body;
 
   //checking building of the user
   const checkForBuilding = await fetchBuilding(userId);
@@ -49,6 +51,12 @@ export const fetchFloors = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
   }
+};
+
+export const fetchFloor = async (req: Request, res: Response) => {
+  const { floorNumber } = req.params;
+
+  const response = await getFloorByNumber(floorNumber);
 };
 
 export const updateFloor = async (req: Request, res: Response) => {
