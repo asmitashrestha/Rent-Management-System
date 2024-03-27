@@ -1,10 +1,13 @@
+import { useFloorStore } from "../../stores/FloorStore";
+import RentBlock from "./RentBlock";
+
 const FloorHeader = () => {
+  const { floorData } = useFloorStore();
+
   return (
-    <div>
-      <div className="flex flex-row items-center justify-between bg-white p-4">
-        <p className="font-bold text-2xl">Floor 1</p>
-        <p className="font-bold text-2xl">Price: Rs. 3000</p>
-      </div>
+    <div className="flex flex-row gap-1 mx-1 bg-background">
+      <RentBlock text="Floor" values={floorData.floorNumber} type="normal" />
+      <RentBlock text="Rent" values={floorData.price} />
     </div>
   );
 };

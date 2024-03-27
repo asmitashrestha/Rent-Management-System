@@ -10,14 +10,13 @@ import CustomerDetails from "./components/CustomerDetails";
 import BillForm from "./components/BillForm";
 import Floor from "./components/Floor";
 import Payment from "./components/Payment";
-import EmptyFloorCard from "./components/floors/EmptyFloorCard";
-import CustomerComponent from "./components/CustomerComponent";
-import FloorHeader from "./components/floors/FloorHeader";
 import FloorPage from "./components/floors/FloorPage";
 import BillDetails from "./components/BillDetails";
 import MyFloor from "./pages/MyFloor";
 import FloorSummary from "./pages/FloorSummary";
 import FetchCustomer from "./components/FetchCustomer";
+import AskFloors from "./components/proxyForms/AskFloors";
+import ProxyMyFloor from "./components/floors/ProxyMyFloor";
 
 const App = () => {
   function handleClick(): void {
@@ -40,9 +39,16 @@ const App = () => {
         <Route path="/customer-details/:id" element={<CustomerDetails />} />
         <Route path="/fetch-customer/:id" element={<FetchCustomer />} />
         <Route path="/bill-details/:id" element={<BillForm />} />
-        {/* <Route path="/floor-collection" element={<Floor number={1} onClick={handleClick} />}/> */}
-        <Route path="/payment" element={<Payment/>}/>
-        <Route path="/bill-status" element={<BillDetails/>}/>
+        {/* <Route
+          path="/floor-collection"
+          element={<Floor number={1} onClick={handleClick} />}
+        /> */}
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/bill-status" element={<BillDetails />} />
+        <Route path="/test" element={<FloorPage />} />
+        <Route path="/my-floor" element={<ProxyMyFloor />} />
+        <Route path="floor" element={<FloorPage />} />
+        <Route path="/askfloor" element={<AskFloors />} />
         <Route path="/test" element={<FloorPage/>}/>
         <Route path="/my-floor" element={<MyFloor/>}/>
         <Route path="/floor-summary" element={<FloorSummary/>}/>
