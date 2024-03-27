@@ -17,6 +17,7 @@ import FloorPage from "./components/floors/FloorPage";
 import BillDetails from "./components/BillDetails";
 import MyFloor from "./pages/MyFloor";
 import FloorSummary from "./pages/FloorSummary";
+import FetchCustomer from "./components/FetchCustomer";
 
 const App = () => {
   function handleClick(): void {
@@ -36,14 +37,15 @@ const App = () => {
         <Route path="/rent-data" element={<Rentdata />} />
         <Route path="/building-details" element={<BuildingDetails />} />
         <Route path="/floor-details/:id" element={<FloorDetails />} />
-        <Route path="/customer-details" element={<CustomerDetails />} />
-        <Route path="/bill-details" element={<BillForm />} />
-        <Route path="/floor-collection" element={<Floor number={1} onClick={handleClick} />}/>
+        <Route path="/customer-details/:id" element={<CustomerDetails />} />
+        <Route path="/fetch-customer/:id" element={<FetchCustomer />} />
+        <Route path="/bill-details/:id" element={<BillForm />} />
+        {/* <Route path="/floor-collection" element={<Floor number={1} onClick={handleClick} />}/> */}
         <Route path="/payment" element={<Payment/>}/>
         <Route path="/bill-status" element={<BillDetails/>}/>
         <Route path="/test" element={<FloorPage/>}/>
         <Route path="/my-floor" element={<MyFloor/>}/>
-        <Route path="/floor-summary/:id" element={<FloorSummary/>}/>
+        <Route path="/floor-summary" element={<FloorSummary/>}/>
       </Routes>
     </div>
   );

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchbuilding } from "../../api-client"; // assuming api.js contains the fetchbuilding function
 import { useNavigate } from "react-router-dom";
-
+ 
 const MyFloor = () => {
   const [floors, setFloors] = useState([]);
   const navigate = useNavigate()
@@ -17,7 +17,7 @@ const MyFloor = () => {
     fetchBuildingFloors();
   }, []);
 
-  const handleFloorNumber = (floorNumber) => {
+  const handleFloorNumber = (floorNumber:number) => {
     navigate(`/floor-details/${floorNumber}`)
     console.log("Floor number clicked:", floorNumber);
     // You can perform further actions with the floor number here

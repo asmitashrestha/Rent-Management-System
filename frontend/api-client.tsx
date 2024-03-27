@@ -131,27 +131,89 @@ export const addFloors = async (
 };
 
 export const fetchFloorById = async (floorNumber: number) => {
-  console.log('helo',floorNumber);
-  
   try {
     const response = await fetch(`http://localhost:8000/floor/${floorNumber}`, {
       method: "GET",
       credentials: "include",
     });
-    
+
     if (!response.ok) {
       const errorText = await response.text();
       console.error("Error while fetching the floor details", errorText);
       throw new Error("Failed to fetch floor details");
     }
-    console.log('res',response);
-    
+
+    const data = await response.json();
+    return { data, error: null }; // Return both data and error as properties
+  } catch (error: any) {
+    console.error("Error fetching the floor details", error.message);
+    return { data: null, error }; // Return error
+  }
+};
+
+export const addCustomerDetails = async (fId: number,customerName:string) => {
+  try {
+    const response = await fetch(`http://localhost:8000/customer/${fId}`,
+    {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ customerName}),
+    });
+    if(!response.ok){
+      throw new Error("Failed to add customer")
+    }
     const data = await response.json()
-    console.log("data",data);
-    
     return data
   } catch (error:any) {
-    console.error("Error fetching the floor details",error.message)
+    console.error("Error adding customer details",error.message)
     throw error
   }
 };
+
+export const fetchCustomerDetails = async (fId:number) => {
+  try {
+    const response = await fetch(`http://localhost:8000/customer/${fId}`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Failed to fetch customer details");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error:any) {
+    console.error("Error fetching customer details", error.message);
+    throw error;
+  }
+};
+
+
+export const addBillDetails = async (id:number,floorRent:number,electricityCharges:number,waterCharges:number,internetCharges:number,others:number) =>{
+  try {
+    const response = await fetch(`http://localhost:8000/bill/${id}`,{
+      method:'POST',
+      credentials:"include",
+      headers:{
+        Accept:"application/json",
+        "Content-Type":"application/json",
+      },
+      body:JSON.stringify({floorRent,electricityCharges,waterCharges,internetCharges,others})
+    })
+    if(!response.ok){
+      throw new Error("Failed to create building")
+    }
+    const data = await response.json()
+    return data
+  } catch (error:any) {
+    console.error("Error adding building", error.message)
+    throw error 
+  }
+}

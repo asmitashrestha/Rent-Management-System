@@ -3,12 +3,12 @@ import db from "../models";
 export const postCustomer = async (
   fId: number | string,
   customerName: string,
-  floorNumber: number
+  // floorNumber: number
 ) => {
   return await db.Customer.create({
     fId: fId,
     customerName: customerName,
-    floorNumber: floorNumber,
+    // floorNumber: floorNumber,
   });
 };
 
@@ -27,11 +27,16 @@ export const getLatestCustomer = async (fId: string | number) => {
   });
 };
 
+// export const getCustomer = async (
+//   fId: number | string,
+//   id: string | number
+// ) => {
+//   return await db.Customer.findOne({ where: { fId: fId, id: id } });
+// };
 export const getCustomer = async (
-  fId: number | string,
-  id: string | number
+  fId: number | string
 ) => {
-  return await db.Customer.findOne({ where: { fId: fId, id: id } });
+  return await db.Customer.findOne({ where: { fId: fId} });
 };
 
 export const getCustomerById = async (id: number | string) => {

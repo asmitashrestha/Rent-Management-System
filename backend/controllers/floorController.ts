@@ -67,7 +67,7 @@ export const fetchFloor = async (req: Request, res: Response) => {
   const response = await getFloorByNumber(floorNumber);
   console.log("response",response);
   
-  return response
+  res.status(200).json(response)
 };
 
 export const updateFloor = async (req: Request, res: Response) => {
