@@ -54,7 +54,7 @@ export const Login = async (formData: SignInFormData) => {
   return responseBody;
 };
 
-export const addBuilding = async (userId: number, floors: number) => {
+export const addBuilding = async (floors: number) => {
   try {
     const response = await fetch("http://localhost:8000/building", {
       method: "POST",
@@ -63,7 +63,7 @@ export const addBuilding = async (userId: number, floors: number) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ userId, floors }),
+      body: JSON.stringify({ floors }),
     });
     if (!response.ok) {
       throw new Error("Failed to create building");
@@ -123,5 +123,20 @@ export const fetchbuilding = async () => {
   } catch (error: any) {
     console.error("Error ftching the building details", error.message);
     throw error;
+  }
+};
+
+export const fetchFloor = async (floorNumber: number | string) => {
+  try {
+    const response = await fetch(`http://localhost:8000/floor/${floorNumber}`, {
+      method: "GET",
+      credentials: "include",
+    });
+    if (!response.ok) {
+      throw new Error("Something went wrong while fetching floor");
+    }
+    return response.json();
+  } catch (error) {
+    console.log("Error fetching floor");
   }
 };

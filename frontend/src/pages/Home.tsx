@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Services from "./Services";
@@ -26,8 +26,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div className="bg-img1 h-screen bg-cover bg-center relative">
-        
+      <div className="bg-img1 h-screen bg-cover bg-center relative -z-50">
         <p className="para relative top-20 p-[105px] text-xl text-gray-900 font-semibold font-serif flex justify-center text-center">
           {textToShow.slice(0, textIndex)}
         </p>
@@ -42,8 +41,8 @@ const Home = () => {
           </div>
         )}
       </div>
-      <Services/>
-      <Footer/>
+      <Services />
+      <Footer />
     </div>
   );
 };

@@ -57,6 +57,7 @@ export const fetchFloor = async (req: Request, res: Response) => {
   const { floorNumber } = req.params;
 
   const response = await getFloorByNumber(floorNumber);
+  return res.status(200).send(response);
 };
 
 export const updateFloor = async (req: Request, res: Response) => {
