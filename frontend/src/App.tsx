@@ -12,6 +12,9 @@ import Floor from "./components/Floor";
 import Payment from "./components/Payment";
 import FloorPage from "./components/floors/FloorPage";
 import BillDetails from "./components/BillDetails";
+import MyFloor from "./pages/MyFloor";
+import FloorSummary from "./pages/FloorSummary";
+import FetchCustomer from "./components/FetchCustomer";
 import AskFloors from "./components/proxyForms/AskFloors";
 import ProxyMyFloor from "./components/floors/ProxyMyFloor";
 
@@ -33,18 +36,22 @@ const App = () => {
         <Route path="/rent-data" element={<Rentdata />} />
         <Route path="/building-details" element={<BuildingDetails />} />
         <Route path="/floor-details/:id" element={<FloorDetails />} />
-        <Route path="/customer-details" element={<CustomerDetails />} />
-        <Route path="/bill-details" element={<BillForm />} />
-        <Route
+        <Route path="/customer-details/:id" element={<CustomerDetails />} />
+        <Route path="/fetch-customer/:id" element={<FetchCustomer />} />
+        <Route path="/bill-details/:id" element={<BillForm />} />
+        {/* <Route
           path="/floor-collection"
           element={<Floor number={1} onClick={handleClick} />}
-        />
+        /> */}
         <Route path="/payment" element={<Payment />} />
         <Route path="/bill-status" element={<BillDetails />} />
         <Route path="/test" element={<FloorPage />} />
         <Route path="/my-floor" element={<ProxyMyFloor />} />
         <Route path="floor" element={<FloorPage />} />
         <Route path="/askfloor" element={<AskFloors />} />
+        <Route path="/test" element={<FloorPage/>}/>
+        <Route path="/my-floor" element={<MyFloor/>}/>
+        <Route path="/floor-summary" element={<FloorSummary/>}/>
       </Routes>
     </div>
   );
