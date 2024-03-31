@@ -7,13 +7,17 @@ import {
 } from "../repository/buildingRepository";
 
 export const addBuilding = async (req: Request, res: Response) => {
-  const userId = req.userId;
-  const { floors } = req.body;
+  const userId = req.body.userId;
+  const floors  = req.body.floors;
+  console.log("useid",userId);
+  console.log('floors',floors);
+  
+  
   try {
     const response = await registration(userId, floors);
     if (response) {
       res.status(201).json({ message: "New Building Created Successfully" });
-    }
+    } 
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Something went wrong" });

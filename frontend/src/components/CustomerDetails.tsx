@@ -1,18 +1,27 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { addCustomerDetails } from "../../api-client"; // Importing the API function
 
 const CustomerDetails = () => {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
+  const [customerName, setCustomerName] = useState("");
+  // const [floorNumber, setFloorNumber] = useState("");
+  const fId= parseInt(useParams().id!);
 
   const handleAddCustomer = () => {
     setShowForm(true);
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
-    // Your form submission logic here
-    navigate("/bill-details");
+    try {
+      // Call the addCustomerDetails function with the form data
+      await addCustomerDetails(fId, customerName); // Replace 123 with actual fid
+      navigate("/bill-details");
+    } catch (error) {
+      console.error("Error occured")
+    }
   };
 
   return (
@@ -52,28 +61,29 @@ const CustomerDetails = () => {
                   <div className="mt-6">
                     <input
                       type="text"
-                      value={"asmita"}
+                      value={customerName}
+                      onChange={(e) => setCustomerName(e.target.value)}
                       placeholder="Enter name..."
                       className="outline-none p-3 rounded-md bg-primary-bg  md:ml-2 font-semibold flex-grow"
                     />
                   </div>
                 </div>
                 <div className="flex justify-between pb-3">
-                 <button
-                  type="submit"
-                  className="relative top-2  px-4 py-2 
-                 border border-black text-black  font-semibold rounded-md"
-                >
-                 Cancel
-                </button> 
-                 <button
-                  type="submit"
-                  className="relative top-2  px-4 py-2 bg-black text-white rounded-md hover:bg-gray-950"
-                >
-                  Submit
-                </button> 
+                  <button
+                    type="button"
+                    onClick={() => setShowForm(false)} // Cancel button to hide the form
+                    className="relative top-2  px-4 py-2 
+                     border border-black text-black  font-semibold rounded-md"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="relative top-2  px-4 py-2 bg-black text-white rounded-md hover:bg-gray-950"
+                  >
+                    Submit
+                  </button>
                 </div>
-                
               </div>
             </form>
           </div>
