@@ -70,3 +70,29 @@ export const putBIllAmount = async (
     }
   );
 };
+
+export const updateRemaining = async (
+  cId: string | number,
+  remainingAmount: number
+) => {
+  return await db.Customer.update(
+    {
+      remainingAmount: remainingAmount,
+    },
+    { where: { cId: cId } }
+  );
+};
+
+export const updatePaidBalance = async (
+  id: string | number,
+  paidAmount: number,
+  remainingAmount: number
+) => {
+  return await db.Customer.update(
+    {
+      paidAmount: paidAmount,
+      remainingAmount: remainingAmount,
+    },
+    { where: { id: id } }
+  );
+};

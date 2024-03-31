@@ -6,56 +6,28 @@ import ProxyPayment from "./ProxyPayment";
 import { useModalStore, useBillModalStore } from "../../stores/ModalStore";
 import RemovePopup from "./RemovePopup";
 import { useFloorStore } from "../../stores/FloorStore";
-import * as apiClient from "../../../api-client";
-import { useEffect } from "react";
 import BillForm from "../BillForm";
+import { useEffect } from "react";
 
 const FloorPage = () => {
   const isOpen = useModalStore((state) => state.isOpen);
   const openModal = useModalStore((state) => state.openModal);
   const isBillOpen = useBillModalStore((state) => state.isBillOpen);
   const openBillModal = useBillModalStore((state) => state.openBillModal);
-  const { selectedFloor, floorData, setFloorData } = useFloorStore();
+  const { selectedFloor, floorData, fetchFloorData } = useFloorStore();
 
-  console.log("selected floor", selectedFloor);
-
-  // useEffect(() => {
-  //   console.log("useEffect triggered with selectedFloor:", selectedFloor);
-  //   if (selectedFloor !== null) {
-  //     fetchFloorData();
-  //   }
-  // }, [selectedFloor]);
-
-  const fetchFloorData = async () => {
-    try {
-      const response = await apiClient.fetchFloor(selectedFloor!);
-      console.log("API Response:", response);
-      if (response !== undefined) {
-        setFloorData(response);
-        console.log("setting Data");
-      } else {
-        console.error("API returned undefined response.");
-      }
-    } catch (error) {
-      console.error("Error fetching floor data:", error);
-    }
-  };
-
-  // if (selectedFloor !== null) {
-  //   fetchFloorData();
-  // }
+  // console.log("selected floor", selectedFloor);
 
   useEffect(() => {
+    console.log("hello");
     if (selectedFloor !== null) {
-      fetchFloorData();
+      fetchFloorData(selectedFloor);
     }
-  }, []);
+  }, [selectedFloor]);
 
-  useEffect(() => {
-    console.log("hello from useEffect");
-  }, []);
-
-  // console.log("floordata", floorData);
+  const status = floorData.status;
+  console.log(status);
+  console.log(selectedFloor);
 
   return (
     <div className="flex flex-row justify-center bg-background lg:w-3/5 m-auto ">
@@ -67,7 +39,7 @@ const FloorPage = () => {
           <CustomerComponent />
         )}
       </div>
-      {floorData && floorData.status === "empty" ? null : (
+      {status == "empty" ? null : (
         <div className="flex flex-col w-2/5">
           <div className="flex flex-row bg-background font-heading p-2 text-lg gap-4">
             <button
@@ -91,6 +63,30 @@ const FloorPage = () => {
           </span>
         </div>
       )}
+      {/* {floorData && floorData.status === "empty" ? null : (
+        <div className="flex flex-col w-2/5">
+          <div className="flex flex-row bg-background font-heading p-2 text-lg gap-4">
+            <button
+              className="bg-accent text-background px-4 py-2 rounded-md w-full"
+              onClick={openBillModal}
+            >
+              Generate Bill
+            </button>
+            <button
+              className="bg-accent text-background px-4 py-2 rounded-md w-full"
+              onClick={openModal}
+            >
+              Remove Tenant
+            </button>
+          </div>
+          <span className="mt-8">
+            <ProxyBIll />
+          </span>
+          <span className="mt-6">
+            <ProxyPayment />
+          </span>
+        </div>
+      )} */}
 
       {isOpen && (
         <div>

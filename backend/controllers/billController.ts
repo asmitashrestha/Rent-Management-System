@@ -72,7 +72,7 @@ export const addBill = async (req: Request, res: Response) => {
 
       // Update bill amount in Customer
       const newBill = previousBill + total;
-      const updateBIllAmount = await putBIllAmount(cId, newBill);
+      await putBIllAmount(cId, newBill);
 
       return res.status(201).json({ message: "BIll Created Successfully" });
     } catch (error) {
@@ -85,14 +85,13 @@ export const addBill = async (req: Request, res: Response) => {
 };
 
 export const fetchBill = async (req: Request, res: Response) => {
-  const { cId } = req.body;
   const { id } = req.params;
   try {
-    const response = await getLatestBill(cId);
+    const response = await getLatestBill(id);
     if (!response) {
       return res.status(400).json({ message: "Cannot fetch bill" });
     }
-    return res.status(200).json({ response });
+    return res.status(200).json(response);
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
   }

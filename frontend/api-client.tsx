@@ -140,3 +140,39 @@ export const fetchFloor = async (floorNumber: number | string) => {
     console.log("Error fetching floor");
   }
 };
+
+export const addCustomer = async (
+  fId: number | string,
+  customerName: string
+) => {
+  try {
+    const response = await fetch(`http://localhost:8000/customer/${fId}`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ customerName: customerName }),
+    });
+    if (!response.ok) {
+      throw new Error("Something went wrong");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchCustomer = async (id: number) => {
+  try {
+    const response = await fetch(`http://localhost:8000/customer/${id}`, {
+      method: "GET",
+      credentials: "include",
+    });
+    if (!response.ok) {
+      throw new Error("Something went wrong while fetching floor");
+    }
+    return response.json();
+  } catch (error) {
+    console.log("Error fetching floor");
+  }
+};

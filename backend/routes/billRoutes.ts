@@ -3,7 +3,7 @@ import { addBill, fetchBill, updateBIll } from "../controllers/billController";
 const router = express.Router();
 
 router.post("/:id", addBill);
-router.get("/", fetchBill);
+router.get("/:id", fetchBill);
 router.put("/:id", updateBIll);
 
 export default router;
