@@ -26,6 +26,7 @@ import {
 export const addCustomer = async (req: Request, res: Response) => {
   const fId = req.params.id;
   const { customerName} = req.body;
+console.log("fidhdcgsjd", fId);
 
   try {
     const response = await postCustomer(fId, customerName);

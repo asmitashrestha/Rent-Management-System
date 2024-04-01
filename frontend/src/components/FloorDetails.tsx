@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import { addFloors } from "../../api-client";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const FloorDetails = () => {
   const [price, setPrice] = useState("");
   const [message, setMessage] = useState("");
-  const floorNumber = parseInt(useParams().id!);
+  const navigate = useNavigate()
+  // const floorNumber = parseInt(useParams().id!);
+
+  const { id } = useParams();
+  console.log("id",id);
+   // Get the floor number from route parameter
+  const floorNumber = parseInt(id); // Parse the floor number as an integer
+
+  console.log("hey floor",floorNumber);
+  
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
@@ -15,6 +24,9 @@ const FloorDetails = () => {
       if (!userId) {
         throw new Error("User ID is missing from local storage");
       }
+      if (isNaN(floorNumber)) {
+        throw new Error("Invalid floor number");
+      }
       console.log("floornumber",floorNumber)
 
       const response = await addFloors(parseInt(userId), floorNumber, parseInt(price));
@@ -22,6 +34,7 @@ const FloorDetails = () => {
       
       setMessage(response);
       setPrice(price);
+      navigate(`/customer-details/${floorNumber}`)
     } catch (error: any) {
       console.error("Error adding floor:", error.message);
       setMessage(error.message);

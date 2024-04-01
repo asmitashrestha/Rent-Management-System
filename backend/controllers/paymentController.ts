@@ -16,6 +16,8 @@ export const addPayment = async (req: Request, res: Response) => {
     }
     return res.status(201).json({ message: "Payment Created" });
   } catch (error) {
+    console.log("error",error.message);
+    
     return res.status(500).json({ message: "Something went wrong" });
   }
 };

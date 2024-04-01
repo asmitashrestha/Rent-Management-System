@@ -48,7 +48,7 @@ const Register = () => {
   });
 
   return (
-    <div>
+    <div className="">
       <div className="px-10 bg-stone-100">
         <div className="md:pt-3 md:pb-5 md:px-24">
           <div className="flex flex-col md:flex-row p-1 bg-slate-100  shadow-teal-950 shadow-2xl rounded">

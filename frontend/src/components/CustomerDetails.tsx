@@ -9,6 +9,8 @@ const CustomerDetails = () => {
   // const [floorNumber, setFloorNumber] = useState("");
   const fId= parseInt(useParams().id!);
 
+  console.log('customer id',fId);
+  
   const handleAddCustomer = () => {
     setShowForm(true);
   };
@@ -18,7 +20,7 @@ const CustomerDetails = () => {
     try {
       // Call the addCustomerDetails function with the form data
       await addCustomerDetails(fId, customerName); // Replace 123 with actual fid
-      navigate("/bill-details");
+      navigate(`/bill-details/${fId}`);
     } catch (error) {
       console.error("Error occured")
     }

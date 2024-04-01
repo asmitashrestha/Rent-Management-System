@@ -12,7 +12,7 @@ const AskFloors = () => {
 
   const handleSave = async () => {
     try {
-      const response = await apiClient.addBuilding(floor);
+      const response = await apiClient.addBuilding(parseInt(userId),floor);
       if (!response) {
         console.log("Something went wrong in adding building");
       }

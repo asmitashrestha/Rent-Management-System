@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { addBuilding } from "../../api-client";
+import SideNavbar from "./SideNavbar";
 
 const BuildingDetails = () => {
   const [floor, setFloor] = useState(0); // Initialize floor as null
@@ -11,6 +12,7 @@ const BuildingDetails = () => {
   // Retrieve user data from local storage
   const userData = localStorage.getItem("userData");
   const userId = userData ? JSON.parse(userData).userId : null;
+  console.log("User id", userId);
 
   useEffect(() => {
     // If buildingId is set, show floors
@@ -38,11 +40,12 @@ const BuildingDetails = () => {
 
   const handleFloorClick = () => {
     // Navigate to floor details page
-    
   };
 
   return (
-    <div className="bg-img1 h-screen bg-cover bg-center flex justify-center items-center">
+    <>
+    <SideNavbar/>
+      <div className="bg-img1 h-screen bg-cover bg-center flex justify-center items-center">
       {!showFloors ? (
         <form className="text-center" onSubmit={(e) => e.preventDefault()}>
           <div className="bg-stone-300 p-16 rounded-sm shadow-amber-800 shadow-2xl">
@@ -81,6 +84,8 @@ const BuildingDetails = () => {
         </div>
       )}
     </div>
+    </>
+  
   );
 };
 

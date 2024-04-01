@@ -11,6 +11,7 @@ export const register = async (formData: RegisterFormData) => {
     },
     body: JSON.stringify(formData),
   });
+  console.log("register failed");
 
   if (!response.ok) {
     throw new Error("Something went wrong");
@@ -54,7 +55,7 @@ export const Login = async (formData: SignInFormData) => {
   return responseBody;
 };
 
-export const addBuilding = async (floors: number) => {
+export const addBuilding = async (userId: number, floors: number) => {
   try {
     const response = await fetch("http://localhost:8000/building", {
       method: "POST",
@@ -63,7 +64,7 @@ export const addBuilding = async (floors: number) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ floors }),
+      body: JSON.stringify({ userId, floors }),
     });
     if (!response.ok) {
       throw new Error("Failed to create building");
@@ -151,30 +152,34 @@ export const fetchFloorById = async (floorNumber: number) => {
   }
 };
 
-export const addCustomerDetails = async (fId: number,customerName:string) => {
+export const addCustomerDetails = async (fId: number, customerName: string) => {
+  console.log("Fid", fId);
+  console.log("Customer name", customerName);
+
   try {
-    const response = await fetch(`http://localhost:8000/customer/${fId}`,
-    {
+    const response = await fetch(`http://localhost:8000/customer/${fId}`, {
       method: "POST",
       credentials: "include",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ customerName}),
+      body: JSON.stringify({ customerName }),
     });
-    if(!response.ok){
-      throw new Error("Failed to add customer")
+    if (!response.ok) {
+      throw new Error("Failed to add customer");
     }
-    const data = await response.json()
-    return data
-  } catch (error:any) {
-    console.error("Error adding customer details",error.message)
-    throw error
+    const data = await response.json();
+    console.log("data", data);
+
+    return data;
+  } catch (error: any) {
+    console.error("Error adding customer details", error.message);
+    throw error;
   }
 };
 
-export const fetchCustomerDetails = async (fId:number) => {
+export const fetchCustomerDetails = async (fId: number) => {
   try {
     const response = await fetch(`http://localhost:8000/customer/${fId}`, {
       method: "GET",
@@ -189,26 +194,11 @@ export const fetchCustomerDetails = async (fId:number) => {
     }
     const data = await response.json();
     return data;
-  } catch (error:any) {
+  } catch (error: any) {
     console.error("Error fetching customer details", error.message);
     throw error;
   }
 };
-
-// export const fetchFloor = async (floorNumber: number | string) => {
-//   try {
-//     const response = await fetch(`http://localhost:8000/floor/${floorNumber}`, {
-//       method: "GET",
-//       credentials: "include",
-//     });
-//     if (!response.ok) {
-//       throw new Error("Something went wrong while fetching floor");
-//     }
-//     return response.json();
-//   } catch (error) {
-//     console.log("Error fetching floor");
-//   }
-// };
 
 export const fetchFloor = async (floorNumber: number | string) => {
   try {
@@ -225,25 +215,75 @@ export const fetchFloor = async (floorNumber: number | string) => {
   }
 };
 
-
-export const addBillDetails = async (id:number,floorRent:number,electricityCharges:number,waterCharges:number,internetCharges:number,others:number) =>{
+export const addBillDetails = async (
+  id: number,
+  floorRent: number,
+  electricityCharges: number,
+  waterCharges: number,
+  internetCharges: number,
+  others: number
+) => {
   try {
-    const response = await fetch(`http://localhost:8000/bill/${id}`,{
-      method:'POST',
-      credentials:"include",
-      headers:{
-        Accept:"application/json",
-        "Content-Type":"application/json",
+    const response = await fetch(`http://localhost:8000/bill/${id}`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify({floorRent,electricityCharges,waterCharges,internetCharges,others})
-    })
-    if(!response.ok){
-      throw new Error("Failed to create building")
+      body: JSON.stringify({
+        floorRent,
+        electricityCharges,
+        waterCharges,
+        internetCharges,
+        others,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to create building");
     }
-    const data = await response.json()
-    return data
-  } catch (error:any) {
-    console.error("Error adding building", error.message)
-    throw error 
+    const data = await response.json();
+    return data;
+  } catch (error: any) {
+    console.error("Error adding building", error.message);
+    throw error;
   }
-}
+};
+
+export const fetchBillDetails = async (id: number, cId: number) => {
+  try {
+    const response = await fetch(`http://localhost:8000/bill/${id}`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify({ cId }),
+    });
+    if (!response.ok) {
+      throw new Error("Something went wrong while fetching bill");
+    }
+    return response.json();
+  } catch (error: any) {
+    console.log("Error fetching the bill", error.message);
+  }
+};
+
+export const addPayment = async (id: number, paidAmount: number) => {
+  try {
+    const response = await fetch(`http://localhost:8000/payment`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id, paidAmount }),
+    });
+    if (!response.ok) {
+      throw new Error("Something went wrong while adding payment");
+    }
+    return true; // Return true if payment is successfully added
+  } catch (error:any) {
+    console.log("Error adding payment", error.message);
+    throw error; // Re-throw the error to handle it in the component
+  }
+};

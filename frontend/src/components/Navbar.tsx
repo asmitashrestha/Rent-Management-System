@@ -13,12 +13,12 @@ const Navbar = () => {
   const closeModal = useModalStore((state) => state.closeModal);
   const openModal = useModalStore((state) => state.openModal);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setColorIndex((colorIndex + 1) % colors.length);
-  //   }, 1000);
-  //   return () => clearInterval(interval);
-  // }, [colorIndex]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setColorIndex((colorIndex + 1) % colors.length);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [colorIndex]);
 
   const getColor = () => {
     return colors[colorIndex];
@@ -61,16 +61,14 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="font-semibold text-xl font-serif relative right-5 top-7 hover:text-gray-800">
-          {/* <Link
+          <Link
             to={"/rent-data"}
             style={{ color: getColor() }}
             className="mr-9"
           >
             Rent Collection
-          </Link> */}
-          {/* <Link to={"/askfloor"} style={{ color: getColor() }} className="mr-9">
-            Register Building
-          </Link> */}
+          </Link> 
+        
           {buildingFloors ? (
             <Link
               to={"/my-floor"}
@@ -79,12 +77,9 @@ const Navbar = () => {
             >
               My Floors
             </Link>
-          ) : (
-            <span className="cursor-pointer mx-1" onClick={openModal}>
-              Register building
-            </span>
-          )}
+          ) : null}
 
+        
           <Link to={"/services"} style={{ color: getColor() }}>
             Services
           </Link>
