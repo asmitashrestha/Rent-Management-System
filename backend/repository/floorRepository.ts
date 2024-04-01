@@ -47,3 +47,14 @@ export const putEmpty = async (id: string | number) => {
 export const getFloorByNumber = async (floorNumber: number | string) => {
   return await db.Floor.findOne({ where: { floorNumber: floorNumber } });
 };
+
+export const changeStatus = async (id: number | string, status: string) => {
+  return await db.Floor.update(
+    { status: status },
+    {
+      where: {
+        id: id,
+      },
+    }
+  );
+};

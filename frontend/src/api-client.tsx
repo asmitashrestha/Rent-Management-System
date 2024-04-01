@@ -215,6 +215,42 @@ export const fetchFloor = async (floorNumber: number | string) => {
   }
 };
 
+export const addCustomer = async (
+  fId: number | string,
+  customerName: string
+) => {
+  try {
+    const response = await fetch(`http://localhost:8000/customer/${fId}`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ customerName: customerName }),
+    });
+    if (!response.ok) {
+      throw new Error("Something went wrong");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchCustomer = async (id: number) => {
+  try {
+    const response = await fetch(`http://localhost:8000/customer/${id}`, {
+      method: "GET",
+      credentials: "include",
+    });
+    if (!response.ok) {
+      throw new Error("Something went wrong while fetching floor");
+    }
+    return response.json();
+  } catch (error) {
+    console.log("Error fetching floor");
+  }
+};
+
 export const addBillDetails = async (
   id: number,
   floorRent: number,
@@ -247,43 +283,5 @@ export const addBillDetails = async (
   } catch (error: any) {
     console.error("Error adding building", error.message);
     throw error;
-  }
-};
-
-export const fetchBillDetails = async (id: number, cId: number) => {
-  try {
-    const response = await fetch(`http://localhost:8000/bill/${id}`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        'Content-Type':'application/json'
-      },
-      body: JSON.stringify({ cId }),
-    });
-    if (!response.ok) {
-      throw new Error("Something went wrong while fetching bill");
-    }
-    return response.json();
-  } catch (error: any) {
-    console.log("Error fetching the bill", error.message);
-  }
-};
-
-export const addPayment = async (id: number, paidAmount: number) => {
-  try {
-    const response = await fetch(`http://localhost:8000/payment`, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id, paidAmount }),
-    });
-    if (!response.ok) {
-      throw new Error("Something went wrong while adding payment");
-    }
-    return true; // Return true if payment is successfully added
-  } catch (error:any) {
-    console.log("Error adding payment", error.message);
-    throw error; // Re-throw the error to handle it in the component
   }
 };

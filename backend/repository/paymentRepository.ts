@@ -4,18 +4,18 @@ export const postPayment = async (
   c_id: number | string,
   paidAmount: number
 ) => {
-  return await db.Payment.create({
+  return await db.billPayment.create({
     c_id: c_id,
     paidAmount: paidAmount,
   });
 };
 
 export const getPayments = async (c_id: number | string) => {
-  return await db.Payment.findAll({ where: { c_id: c_id } });
+  return await db.billPayment.findAll({ where: { c_id: c_id } });
 };
 
 export const getLatestPayment = async (c_id: number | string) => {
-  return await db.Payment.findOne({
+  return await db.billPayment.findOne({
     where: { c_id: c_id },
     order: [["createdAt", "DESC"]],
   });

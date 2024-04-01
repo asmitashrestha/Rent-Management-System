@@ -14,7 +14,7 @@ export const addFloors = async (req: Request, res: Response) => {
   console.log(req.params);
   const { floorNumber } = req.params;
   const { price } = req.body;
-console.log("params",req.params);
+  console.log("params", req.params);
 
   // Check if userId is available in the request
   if (!userId) {
@@ -25,14 +25,18 @@ console.log("params",req.params);
     // Check if building exists for the user
     const checkForBuilding = await fetchBuilding(userId);
     if (!checkForBuilding || checkForBuilding.length === 0) {
-      return res.status(400).json({ message: "Building doesn't exist for the user" });
-    }   
+      return res
+        .status(400)
+        .json({ message: "Building doesn't exist for the user" });
+    }
     const bId = checkForBuilding[0].dataValues.id;
 
     // Create the floor
     const response = await postFloor(bId, floorNumber, price);
     if (!response) {
-      return res.status(400).json({ message: "Something went wrong while creating the floor" });
+      return res
+        .status(400)
+        .json({ message: "Something went wrong while creating the floor" });
     }
     return res.status(201).json({ message: "Floor Created Successfully" });
   } catch (error) {

@@ -6,6 +6,7 @@ import {
   postCustomer,
   putAmounts,
 } from "../repository/customerRepository";
+import { changeStatus } from "../repository/floorRepository";
 
 // export const addCustomer = async (req: Request, res: Response) => {
 //   const fId = req.params.id;
@@ -33,6 +34,8 @@ console.log("fidhdcgsjd", fId);
     if (!response) {
       return res.status(400).json({ message: "Something went wrong" });
     }
+
+    await changeStatus(fId, "occupied");
     return res.status(201).json({ message: "Customer Added Successfully" });
   } catch (error) {
     console.log(error);

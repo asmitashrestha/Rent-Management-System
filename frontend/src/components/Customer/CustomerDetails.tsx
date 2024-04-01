@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import useCustomerStore from '../../stores/customerStore';
+import useCustomerStore from '../../stores/CustomerStore';
 import { addCustomerDetails } from '../../api-client'; // Importing the API function
 
 const CustomerDetails = () => {

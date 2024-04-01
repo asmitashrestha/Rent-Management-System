@@ -10,6 +10,7 @@ interface FloorStore {
 }
 
 export const useFloorStore = create<FloorStore>((set) => ({
+  // floorData: [],
   selectedFloor: null,
   floorData: null,
   price:'',
