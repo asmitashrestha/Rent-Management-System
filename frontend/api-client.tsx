@@ -294,38 +294,3 @@ export const addBillDetails = async (
     throw error;
   }
 };
-
-export const addBillDetails = async (
-  id: number,
-  floorRent: number,
-  electricityCharges: number,
-  waterCharges: number,
-  internetCharges: number,
-  others: number
-) => {
-  try {
-    const response = await fetch(`http://localhost:8000/bill/${id}`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        floorRent,
-        electricityCharges,
-        waterCharges,
-        internetCharges,
-        others,
-      }),
-    });
-    if (!response.ok) {
-      throw new Error("Failed to create building");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error: any) {
-    console.error("Error adding building", error.message);
-    throw error;
-  }
-};

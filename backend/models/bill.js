@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "cId",
       });
       Bill.hasOne(models.Payment, {
-        foreignKey: "b_id",
+        foreignKey: "c_id",
       });
     }
   }
