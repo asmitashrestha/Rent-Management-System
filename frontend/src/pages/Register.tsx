@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Signlogo from "../assets/sign.png";
 import { useMutation, useQueryClient } from "react-query";
 import { useForm } from "react-hook-form";
-import * as apiClient from "../../api-client";
+import * as apiClient from "../api-client";
 import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

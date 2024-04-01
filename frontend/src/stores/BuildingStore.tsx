@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import * as apiClient from "../../api-client";
+import * as apiClient from "../api-client";
 
 interface BuildingState {
   buildingData: any[];

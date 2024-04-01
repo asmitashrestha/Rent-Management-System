@@ -1,23 +1,25 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import useBillStore from "../../stores/billStore";
 
 const BillForm = () => {
-  const [formData, setFormData] = useState({
-    floorRent: "",
-    electricityCharges: "",
-    waterCharges: "",
-    internetCharges: "",
-    others: "",
-  });
-  const [error, setError] = useState(null);
-const navigate = useNavigate()
+  const { formData, error, setFormData, setError, resetFormData } =
+    useBillStore();
+  const navigate = useNavigate();
   const cId = parseInt(useParams().id!);
 
-  const handleChange = (event) => {
+  useEffect(() => {
+    // Reset form data when component unmounts
+    return () => {
+      resetFormData();
+    };
+  }, [resetFormData]);
+
+  const handleChange = (event: any) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
 
     try {
@@ -34,24 +36,19 @@ const navigate = useNavigate()
       }
 
       // Reset form data
-      setFormData({
-        floorRent: "",
-        electricityCharges: "",
-        waterCharges: "",
-        internetCharges: "",
-        others: "",
-      });
-
+      resetFormData();
+ navigate(`/fetch-customer/${cId}`)
       // Handle success
       alert("Bill added successfully");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error adding bill:", error.message);
-      setError("Failed to add bill");
+      setError(error);
     }
   };
-  const handleCancel = ()=>{
-   navigate(`/fetch-customer/${cId}`)
-  }
+
+  const handleCancel = () => {
+    navigate(`/my-floor`);
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-stone-100">
@@ -60,6 +57,7 @@ const navigate = useNavigate()
           Add Bill
         </h2>
         <form onSubmit={handleSubmit}>
+          {/* Your form inputs */}
           <div className="mb-4">
             <label className="block text-gray-700 font-semibold mb-2 text-lg">
               Electricity Charges:
@@ -109,14 +107,15 @@ const navigate = useNavigate()
             />
           </div>
           <div className="flex justify-between">
-            <button 
-            onClick={handleCancel}
-            className="text-gray-700 border  border-black py-2 px-4 rounded-md font-semibold ">
+            <button
+              onClick={handleCancel}
+              className="text-gray-700 border  border-black py-2 px-4 rounded-md font-semibold"
+            >
               Cancel
             </button>
             <button
               type="submit"
-              className="bg-blue-950 text-white p-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring focus:ring-blue-400 font-semibold "
+              className="bg-blue-950 text-white p-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring focus:ring-blue-400 font-semibold"
             >
               Add Bill
             </button>

@@ -1,5 +1,5 @@
-import { SignInFormData } from "./src/pages/Login";
-import { RegisterFormData } from "./src/pages/Register";
+import { SignInFormData } from "./pages/Login";
+import { RegisterFormData } from "./pages/Register";
 
 export const register = async (formData: RegisterFormData) => {
   const response = await fetch("http://localhost:8000/users/register", {

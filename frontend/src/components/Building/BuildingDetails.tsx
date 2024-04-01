@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { addBuilding } from "../../api-client";
-import SideNavbar from "./SideNavbar";
+import SideNavbar from "../Header/SideNavbar";
 
 const BuildingDetails = () => {
   const [floor, setFloor] = useState(0); // Initialize floor as null

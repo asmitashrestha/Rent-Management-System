@@ -1,4 +1,4 @@
-import SideNavbar from "./SideNavbar";
+import SideNavbar from "../Header/SideNavbar";
 
 const Payment = () => {
   return (

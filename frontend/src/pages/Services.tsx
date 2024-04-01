@@ -1,4 +1,4 @@
-import Service from '../components/Service'
+import Service from '../components/Service/Service'
 
 const Services = () => {
   return (

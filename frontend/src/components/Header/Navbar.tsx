@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/rentlogo.png";
-import { useModalStore } from "../stores/ModalStore";
-import { useBuildingStore } from "../stores/BuildingStore";
-import AskFloors from "./proxyForms/AskFloors";
+import Logo from "../../assets/rentlogo.png";
+import { useModalStore } from "../../stores/ModalStore";
+import { useBuildingStore } from "../../stores/BuildingStore";
 
 const Navbar = () => {
   const [colorIndex, setColorIndex] = useState(0);
@@ -87,11 +86,6 @@ const Navbar = () => {
             Login
           </Link>
         </div>
-        {isOpen && (
-          <div onClick={handleOutsideClick}>
-            <AskFloors />
-          </div>
-        )}
       </nav>
     </div>
   );

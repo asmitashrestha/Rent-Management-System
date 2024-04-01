@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchBillDetails } from '../../api-client'; // Assuming your API function is in a file named api.ts
+import { fetchBillDetails } from '../api-client'; // Assuming your API function is in a file named api.ts
 import { useParams } from 'react-router-dom';
 
 interface Bill {

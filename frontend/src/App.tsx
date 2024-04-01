@@ -4,15 +4,15 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Services from "./pages/Services";
 import Rentdata from "./pages/Rentdata";
-import BuildingDetails from "./components/BuildingDetails";
-import FloorDetails from "./components/FloorDetails";
-import CustomerDetails from "./components/CustomerDetails";
-import BillForm from "./components/BillForm";
-import Payment from "./components/Payment";
+import BuildingDetails from "./components/Building/BuildingDetails";
+import FloorDetails from "./components/Floor/FloorDetails";
+import CustomerDetails from "./components/Customer/CustomerDetails";
+import BillForm from "./components/Bill/BillForm";
+import Payment from "./components/Payment/Payment";
 
 import MyFloor from "./pages/MyFloor";
 import FloorSummary from "./pages/FloorSummary";
-import FetchCustomer from "./components/FetchCustomer";
+import FetchCustomer from "./components/Customer/FetchCustomer";
 import FetchBill from "./pages/FetchBill";
 
 

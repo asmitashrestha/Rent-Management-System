@@ -3,7 +3,7 @@ import { useBuildingStore } from "../stores/BuildingStore";
 import { useFloorStore } from "../stores/FloorStore";
 import { useNavigate } from "react-router-dom";
 import { FaAngleDoubleRight } from "react-icons/fa";
-import SideNavbar from "../components/SideNavbar";
+import SideNavbar from "../components/Header/SideNavbar";
 
 const MyFloor = () => {
   const fetchBuildingData = useBuildingStore(

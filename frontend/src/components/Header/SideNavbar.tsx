@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from '../assets/rentlogo.png'
+import Logo from '../../assets/rentlogo.png'
 const SideNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 

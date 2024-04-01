@@ -15,7 +15,7 @@ const FetchCustomer = () => {
         const data = await fetchCustomerDetails(fId);
         setCustomerDetails(data);
         setError(null);
-      } catch (error) {
+      } catch (error:any) {
         console.error("Error fetching customer details:", error.message);
         setError(error);
       }
