@@ -4,24 +4,20 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Services from "./pages/Services";
 import Rentdata from "./pages/Rentdata";
-import BuildingDetails from "./components/BuildingDetails";
-import FloorDetails from "./components/FloorDetails";
-import CustomerDetails from "./components/CustomerDetails";
-import BillForm from "./components/BillForm";
-import Floor from "./components/Floor";
-import Payment from "./components/Payment";
-import FloorPage from "./components/floors/FloorPage";
-import BillDetails from "./components/BillDetails";
+import BuildingDetails from "./components/Building/BuildingDetails";
+import FloorDetails from "./components/Floor/FloorDetails";
+import CustomerDetails from "./components/Customer/CustomerDetails";
+import BillForm from "./components/Bill/BillForm";
+import Payment from "./components/Payment/Payment";
+
 import MyFloor from "./pages/MyFloor";
 import FloorSummary from "./pages/FloorSummary";
-import FetchCustomer from "./components/FetchCustomer";
-import AskFloors from "./components/proxyForms/AskFloors";
-import ProxyMyFloor from "./components/floors/ProxyMyFloor";
+import FetchCustomer from "./components/Customer/FetchCustomer";
+import FetchBill from "./pages/FetchBill";
+
 
 const App = () => {
-  function handleClick(): void {
-    throw new Error("Function not implemented.");
-  }
+  
 
   return (
     <div>
@@ -39,19 +35,10 @@ const App = () => {
         <Route path="/customer-details/:id" element={<CustomerDetails />} />
         <Route path="/fetch-customer/:id" element={<FetchCustomer />} />
         <Route path="/bill-details/:id" element={<BillForm />} />
-        {/* <Route
-          path="/floor-collection"
-          element={<Floor number={1} onClick={handleClick} />}
-        /> */}
-        <Route path="/payment" element={<Payment />} />
-        <Route path="/bill-status" element={<BillDetails />} />
-        <Route path="/test" element={<FloorPage />} />
-        <Route path="/my-floor" element={<ProxyMyFloor />} />
-        <Route path="floor" element={<FloorPage />} />
-        <Route path="/askfloor" element={<AskFloors />} />
-        <Route path="/test" element={<FloorPage/>}/>
         <Route path="/my-floor" element={<MyFloor/>}/>
         <Route path="/floor-summary" element={<FloorSummary/>}/>
+        <Route path="/fetch-bill/:id" element={<FetchBill/>}/>
+        <Route path="/add-payment" element={<Payment />} />
       </Routes>
     </div>
   );

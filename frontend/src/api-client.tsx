@@ -1,5 +1,5 @@
-import { SignInFormData } from "./src/pages/Login";
-import { RegisterFormData } from "./src/pages/Register";
+import { SignInFormData } from "./pages/Login";
+import { RegisterFormData } from "./pages/Register";
 
 export const register = async (formData: RegisterFormData) => {
   const response = await fetch("http://localhost:8000/users/register", {
@@ -11,6 +11,7 @@ export const register = async (formData: RegisterFormData) => {
     },
     body: JSON.stringify(formData),
   });
+  console.log("register failed");
 
   if (!response.ok) {
     throw new Error("Something went wrong");
@@ -54,7 +55,7 @@ export const Login = async (formData: SignInFormData) => {
   return responseBody;
 };
 
-export const addBuilding = async (floors: number) => {
+export const addBuilding = async (userId: number, floors: number) => {
   try {
     const response = await fetch("http://localhost:8000/building", {
       method: "POST",
@@ -63,7 +64,7 @@ export const addBuilding = async (floors: number) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ floors }),
+      body: JSON.stringify({ userId, floors }),
     });
     if (!response.ok) {
       throw new Error("Failed to create building");
@@ -152,6 +153,9 @@ export const fetchFloorById = async (floorNumber: number) => {
 };
 
 export const addCustomerDetails = async (fId: number, customerName: string) => {
+  console.log("Fid", fId);
+  console.log("Customer name", customerName);
+
   try {
     const response = await fetch(`http://localhost:8000/customer/${fId}`, {
       method: "POST",
@@ -166,6 +170,8 @@ export const addCustomerDetails = async (fId: number, customerName: string) => {
       throw new Error("Failed to add customer");
     }
     const data = await response.json();
+    console.log("data", data);
+
     return data;
   } catch (error: any) {
     console.error("Error adding customer details", error.message);
@@ -193,21 +199,6 @@ export const fetchCustomerDetails = async (fId: number) => {
     throw error;
   }
 };
-
-// export const fetchFloor = async (floorNumber: number | string) => {
-//   try {
-//     const response = await fetch(`http://localhost:8000/floor/${floorNumber}`, {
-//       method: "GET",
-//       credentials: "include",
-//     });
-//     if (!response.ok) {
-//       throw new Error("Something went wrong while fetching floor");
-//     }
-//     return response.json();
-//   } catch (error) {
-//     console.log("Error fetching floor");
-//   }
-// };
 
 export const fetchFloor = async (floorNumber: number | string) => {
   try {

@@ -1,29 +1,33 @@
-import React, { useState } from "react";
-import { addFloors } from "../../api-client";
-import { useParams } from "react-router-dom";
+import { addFloors } from '../../api-client';
+import { useNavigate, useParams } from 'react-router-dom';
+import {useFloorStore }from '../../stores/FloorStore';
 
 const FloorDetails = () => {
-  const [price, setPrice] = useState("");
-  const [message, setMessage] = useState("");
-  const floorNumber = parseInt(useParams().id!);
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  // const [price, setPrice] = useState('');
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { message, setMessage , price, setPrice } = useFloorStore();
+
+  const floorNumber = parseInt(id);
+
+  const handleSubmit = async (event:any) => {
     event.preventDefault();
     try {
-      // Retrieve userId from local storage
-      const userData = localStorage.getItem("userData");
+      const userData = localStorage.getItem('userData');
       const userId = userData ? JSON.parse(userData).userId : null;
       if (!userId) {
-        throw new Error("User ID is missing from local storage");
+        throw new Error('User ID is missing from local storage');
       }
-      console.log("floornumber",floorNumber)
+      if (isNaN(floorNumber)) {
+        throw new Error('Invalid floor number');
+      }
 
       const response = await addFloors(parseInt(userId), floorNumber, parseInt(price));
-      console.log("response",response);
-      
       setMessage(response);
       setPrice(price);
-    } catch (error: any) {
-      console.error("Error adding floor:", error.message);
+      navigate(`/customer-details/${floorNumber}`);
+    } catch (error:any) {
+      console.error('Error adding floor:', error.message);
       setMessage(error.message);
     }
   };
@@ -41,7 +45,7 @@ const FloorDetails = () => {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               placeholder="Enter price..."
-              className="block outline-none w-full mt-2 p-3 rounded-md bg-stone-900 text-cyan-100 font-semibold "
+              className="block outline-none w-full mt-2 p-3 rounded-md bg-stone-900 text-cyan-100 font-semibold"
             />
           </div>
           <button
@@ -52,9 +56,10 @@ const FloorDetails = () => {
           </button>
         </div>
       </form>
-      {/* {message && <p>{message}</p>} */}
+      {message && <p>{message}</p>}
     </div>
   );
 };
 
 export default FloorDetails;
+

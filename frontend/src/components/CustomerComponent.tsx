@@ -1,9 +1,9 @@
 import { FaUserCircle } from "react-icons/fa";
-import RentBlock from "./floors/RentBlock";
-import { useCustomerStore } from "../stores/CustomerStore";
+// import RentBlock from "./floors/RentBlock";
+import useCustomerStore  from "../stores/CustomerStore";
 import { useEffect } from "react";
 import { useFloorStore } from "../stores/FloorStore";
-import * as apiClient from "../../api-client";
+import * as apiClient from "../api-client";
 
 const CustomerComponent = () => {
   const { customerData, setCustomerData } = useCustomerStore();

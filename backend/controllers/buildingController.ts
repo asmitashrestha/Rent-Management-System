@@ -9,10 +9,10 @@ import {
 export const addBuilding = async (req: Request, res: Response) => {
   const userId = req.body.userId;
   const floors  = req.body.floors;
-  console.log("useid",userId);
+
+  console.log("user id",userId);
   console.log('floors',floors);
-  
-  
+
   try {
     const response = await registration(userId, floors);
     if (response) {

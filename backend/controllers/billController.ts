@@ -86,13 +86,16 @@ export const addBill = async (req: Request, res: Response) => {
 
 export const fetchBill = async (req: Request, res: Response) => {
   const { id } = req.params;
+  console.log("id",id);
+  
   try {
     const response = await getLatestBill(id);
     if (!response) {
       return res.status(400).json({ message: "Cannot fetch bill" });
     }
-    return res.status(200).json(response);
+    return res.status(200).json({ response });
   } catch (error) {
+    console.log("error occured",error.message)
     res.status(500).json({ message: "Something went wrong" });
   }
 };

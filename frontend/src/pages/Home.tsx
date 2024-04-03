@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Header/Navbar";
 import Services from "./Services";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 
 const Home = () => {
   const [textIndex, setTextIndex] = useState(0);

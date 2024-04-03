@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Signlogo from "../assets/sign.png";
 import { useMutation, useQueryClient } from "react-query";
 import { useForm } from "react-hook-form";
-import * as apiClient from "../../api-client";
+import * as apiClient from "../api-client";
 import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -48,7 +48,7 @@ const Register = () => {
   });
 
   return (
-    <div>
+    <div className="">
       <div className="px-10 bg-stone-100">
         <div className="md:pt-3 md:pb-5 md:px-24">
           <div className="flex flex-col md:flex-row p-1 bg-slate-100  shadow-teal-950 shadow-2xl rounded">
