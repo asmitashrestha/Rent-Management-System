@@ -15,10 +15,7 @@ import FloorSummary from "./pages/FloorSummary";
 import FetchCustomer from "./components/Customer/FetchCustomer";
 import FetchBill from "./pages/FetchBill";
 
-
 const App = () => {
-  
-
   return (
     <div>
       <Routes>
@@ -35,10 +32,17 @@ const App = () => {
         <Route path="/customer-details/:id" element={<CustomerDetails />} />
         <Route path="/fetch-customer/:id" element={<FetchCustomer />} />
         <Route path="/bill-details/:id" element={<BillForm />} />
+<<<<<<< HEAD
         <Route path="/my-floor" element={<MyFloor/>}/>
         <Route path="/floor-summary" element={<FloorSummary/>}/>
         <Route path="/fetch-bill/:id" element={<FetchBill/>}/>
         <Route path="/add-payment/:id" element={<Payment />} />
+=======
+        <Route path="/my-floor" element={<MyFloor />} />
+        <Route path="/floor-summary" element={<FloorSummary />} />
+        <Route path="/fetch-bill/:id" element={<FetchBill />} />
+        <Route path="/add-payment" element={<Payment />} />
+>>>>>>> 1debb535a6fa2c30371abd94f434fca3413d37a6
       </Routes>
     </div>
   );

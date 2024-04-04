@@ -45,11 +45,19 @@ const MyFloor = () => {
 
   return (
     <>
+<<<<<<< HEAD
     <SideNavbar/>
     <div className="bg-img1 h-screen bg-cover bg-center flex justify-center items-center">
        <div className="flex justify-center items-center text-center mt-16 ">
         <div className="md:py-5 md:px-7 p-4 rounded shadow-xl shadow-gray-600 bg-white">
           <p className="text-stone-800 font-semibold text-2xl font-serif">
+=======
+      <SideNavbar />
+
+      <div className="flex justify-center items-center text-center mt-16">
+        <div className="md:py-5 md:px-7 p-4 rounded shadow-xl shadow-gray-600 bg-stone-950">
+          <p className="text-cyan-50 font-semibold text-2xl font-serif">
+>>>>>>> 1debb535a6fa2c30371abd94f434fca3413d37a6
             My Floor
           </p>
           <ul className="items-center justify-center text-center py-7">

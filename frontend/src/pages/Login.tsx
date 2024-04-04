@@ -25,7 +25,7 @@ const Login = () => {
     onSuccess: async () => {
       await queryClient.invalidateQueries("validateToken");
       console.log("Login successful");
-      
+
       toast.success("Login Successful !", {
         position: "top-right", // Adjust based on your desired position
         autoClose: 500, // Adjust the duration the toast is displayed
@@ -33,11 +33,11 @@ const Login = () => {
       });
       navigate(location.state?.from?.pathname || "/my-floor");
     },
-    
+
     onError: (error: any) => {
       if (error.response) {
-        console.log("Error happend",error);
-        
+        console.log("Error happend", error);
+
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
         if (error.response.status === 409) {
@@ -57,11 +57,14 @@ const Login = () => {
         }
       } else if (error.request) {
         // The request was made but no response was received
-        toast.error("No response received from server. Please try again later.", {
-          position: "top-right",
-          autoClose: 500,
-          hideProgressBar: false,
-        });
+        toast.error(
+          "No response received from server. Please try again later.",
+          {
+            position: "top-right",
+            autoClose: 500,
+            hideProgressBar: false,
+          }
+        );
       } else {
         // Something happened in setting up the request that triggered an Error
         toast.error("An error occurred. Please try again later.", {
@@ -70,8 +73,7 @@ const Login = () => {
           hideProgressBar: false,
         });
       }
-    }
-    
+    },
   });
 
   const onSubmit = handleSubmit((data) => {
@@ -79,21 +81,22 @@ const Login = () => {
   });
 
   return (
-    <div>
-      <div className="px-10 py-10 bg-cyan-100">
+    <>
+      <div className="px-10 py-10 bg-cyan-100 h-screen flex items-center justify-center">
         <div className="md:pt-1 md:pb-10 md:px-24">
-          <div className="flex flex-col md:flex-row p-1 bg-slate-100  shadow-teal-950 shadow-2xl rounded-2xl">
+          <div className="flex flex-col md:flex-row p-1 bg-white  shadow-teal-950 shadow-2xl rounded-2xl">
             <div className="md:w-1/2 p-8 md:p-16">
               <h1 className="font-bold text-2xl text-blue-950 py-4">Login</h1>
               <form onSubmit={onSubmit}>
-                <div className="mb-4">
+                <div className="mb-1">
                   <label className="font-medium text-md text-gray-800">
                     Email Address
                   </label>
                   <input
                     className="w-full border-none outline-none 
-              bg-stone-900 rounded-2xl px-4 py-2 mt-2 text-white"
+              bg-secondary rounded-2xl px-4 py-2 mt-2 text-black"
                     type="email"
+                    placeholder="Enter your email"
                     autoComplete="current-email"
                     {...register("email", {
                       required: "This field is required",
@@ -101,19 +104,18 @@ const Login = () => {
                   />
                 </div>
                 {errors.email && (
-                  <span className="text-red-600">
-                    {errors.email.message}
-                  </span>
+                  <span className="text-red-600">{errors.email.message}</span>
                 )}
-               
+
                 <div className="mb-4">
                   <label className="font-semibold text-md text-gray-800">
                     Password
                   </label>
                   <input
                     className="w-full mt-2 border-none outline-none
-              bg-stone-900 rounded-2xl border-gray-300 text-white px-4 py-2"
+              bg-secondary rounded-2xl border-gray-300 text-black px-4 py-2"
                     type="password"
+                    placeholder="Enter your password"
                     {...register("password", {
                       required: "This field is required",
                       minLength: {
@@ -129,18 +131,20 @@ const Login = () => {
                   </span>
                 )}
                 <div
-                className="bg-blue-950 flex justify-center text-center
+                  className="bg-blue-950 flex justify-center text-center
            hover:bg-blue-700 rounded-2xl"
-              >
-                <button type="submit" className="px-4 py-1.5 text-white hover:text-cyan-100 font-semibold">
-                  LOGIN
-                </button>
-                <ToastContainer/>
-              </div>
+                >
+                  <button
+                    type="submit"
+                    className="px-4 py-1.5 text-white hover:text-cyan-100 font-semibold"
+                  >
+                    LOGIN
+                  </button>
+                  <ToastContainer />
+                </div>
               </form>
 
-              
-              <div className="mt-4 flex justify-center text-center">
+              <div className="mt-4 flex justify-center text-center items-center">
                 <p className="text-sm font-medium mr-2 text-gray-900">
                   Don't have an account yet?
                 </p>
@@ -158,7 +162,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

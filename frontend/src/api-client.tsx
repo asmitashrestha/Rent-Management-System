@@ -294,3 +294,14 @@ export const fetchBillDetails = async (id: number, cId: number) => {
     console.log("Error fetching the bill", error.message);
   }
 };
+
+export const logout = async () => {
+  const response = await fetch('http://localhost:8000/users/logout', {
+    method: "GET",
+    credentials: "include",
+  });
+  if (!response.ok) {
+    throw new Error("Something went wrong while fetching floor");
+  }
+  return response.json();
+};
