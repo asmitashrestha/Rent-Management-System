@@ -45,8 +45,8 @@ const MyFloor = () => {
 
   return (
     <>
-    <SideNavbar/>
-    
+      <SideNavbar />
+
       <div className="flex justify-center items-center text-center mt-16">
         <div className="md:py-5 md:px-7 p-4 rounded shadow-xl shadow-gray-600 bg-stone-950">
           <p className="text-cyan-50 font-semibold text-2xl font-serif">

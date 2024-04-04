@@ -3,7 +3,7 @@ import Signlogo from "../assets/sign.png";
 import { useMutation, useQueryClient } from "react-query";
 import { useForm } from "react-hook-form";
 import * as apiClient from "../api-client";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export type RegisterFormData = {
@@ -26,12 +26,12 @@ const Register = () => {
   const mutation = useMutation(apiClient.register, {
     onSuccess: async () => {
       await queryClient.invalidateQueries("validateToken");
-      navigate('/')
+      navigate("/");
       toast.success("Registration successful", {
         position: "top-right",
         autoClose: 500,
         hideProgressBar: false,
-      }); 
+      });
     },
 
     onError: (error: Error) => {
@@ -48,123 +48,112 @@ const Register = () => {
   });
 
   return (
-    <div className="">
-      <div className="px-10 bg-stone-100">
-        <div className="md:pt-3 md:pb-5 md:px-24">
-          <div className="flex flex-col md:flex-row p-1 bg-slate-100  shadow-teal-950 shadow-2xl rounded">
-            <div className="md:w-1/2 p-8 md:p-5">
+    <div>
+      <div className="px-10 py-10 bg-cyan-100 h-screen flex items-center justify-center">
+        <div className="md:pt-1 md:pb-10 md:px-24">
+          <div className="flex flex-col md:flex-row p-1 bg-white  shadow-teal-950 shadow-2xl rounded-2xl">
+            <div className="md:w-1/2 p-8 md:p-16">
               <h1 className="font-bold text-2xl text-blue-950 py-4">
                 Register
               </h1>
-            </div>
-            <form action="" method="post" onSubmit={onSubmit}>
-              <div>
-                <div className="mb-4">
+              <form method="post" onSubmit={onSubmit}>
+                <div className="mb-1">
                   <label className="font-medium text-md text-gray-800">
                     Name
                   </label>
                   <input
                     className="w-full border-none outline-none 
-              bg-stone-900 rounded-2xl px-4 py-2 mt-1 text-white"
+                bg-secondary rounded-2xl px-4 py-2 mt-1 text-black"
                     type="text"
                     placeholder="Enter your name..."
-                    {
-                      ...register("userName",{
-                        required:"This field is required",
-                      })
-                    }
+                    {...register("userName", {
+                      required: "This field is required",
+                    })}
                   />
                 </div>
-                {
-                  errors.userName && (
-                    <span className="text-red-600">{errors.userName.message}</span>
-
-                  )
-                }
-                <div className="mb-4">
+                {errors.userName && (
+                  <span className="text-red-600">
+                    {errors.userName.message}
+                  </span>
+                )}
+                <div className="mb-1">
                   <label className="font-medium text-md text-gray-800">
                     Email Address
                   </label>
                   <input
                     className="w-full border-none outline-none 
-              bg-stone-900 rounded-2xl px-4 py-2 mt-1 text-white"
+                bg-secondary rounded-2xl px-4 py-2 mt-1 text-black"
                     type="email"
                     placeholder="Enter your email address..."
-                    {
-                      ...register("email", {
-                        required:'This field is required',
-                      })
-                    }
+                    {...register("email", {
+                      required: "This field is required",
+                    })}
                   />
                 </div>
-                {
-                  errors.email && (
-                    <span className="text-red-600">{errors.email.message}</span>
-
-                  )
-                }
-                <div className="mb-4">
+                {errors.email && (
+                  <span className="text-red-600">{errors.email.message}</span>
+                )}
+                <div className="mb-1">
                   <label className="font-semibold text-md text-gray-800">
                     Password
                   </label>
                   <input
                     className="w-full mt-1 border-none outline-none
-              bg-stone-900 rounded-2xl border-gray-300 text-white px-4 py-2"
+                bg-secondary rounded-2xl border-gray-300 text-black px-4 py-2"
                     type="password"
                     placeholder="Enter your password..."
-                    {
-                      ...register("password", {
-                        required: "This field is required",
-                        minLength:{
-                          value:8,
-                          message:"Password must be 8 characters",
-                        }
-                      })
-                    }
+                    {...register("password", {
+                      required: "This field is required",
+                      minLength: {
+                        value: 8,
+                        message: "Password must be 8 characters",
+                      },
+                    })}
                   />
                 </div>
-                {
-                  errors.password && (
-                    <span className="text-red-600">
-                      {errors.password.message}
-                    </span>
-                  )
-                }
-                <div className="mb-4">
+                {errors.password && (
+                  <span className="text-red-600">
+                    {errors.password.message}
+                  </span>
+                )}
+                <div className="mb-3">
                   <label className="font-semibold text-md text-gray-800">
                     Confirm Password
                   </label>
                   <input
                     className="w-full mt-1 border-none outline-none
-              bg-stone-900 rounded-2xl border-gray-300 text-white px-4 py-2"
+                bg-secondary rounded-2xl border-gray-300 text-black px-4 py-2"
                     type="password"
                     placeholder="Confirm your password..."
                     {...register("confirmPassword", {
-                      validate:(val) => {
-                        if( !val ){
+                      validate: (val) => {
+                        if (!val) {
                           return "This field is required";
-                        }else if( watch("password")!== val) {
-                          return "Your password do not match"
+                        } else if (watch("password") !== val) {
+                          return "Your password do not match";
                         }
-                      }
+                      },
                     })}
                     required
                   />
                 </div>
-                {
-                  errors.confirmPassword && (
-                    <span className="text-red-600">{errors.confirmPassword.message}</span>
-                  )
-                }
+                {errors.confirmPassword && (
+                  <span className="text-red-600">
+                    {errors.confirmPassword.message}
+                  </span>
+                )}
                 <div
                   className="bg-blue-950 flex justify-center text-center
-           hover:bg-blue-700 rounded-2xl"
+              over:bg-blue-700 rounded-2xl"
                 >
-                  <button type="submit" className="px-4 py-1.5 text-white hover:text-cyan-100 font-semibold">
+                  <button
+                    type="submit"
+                    className="px-4 py-1.5 text-white hover:text-cyan-100 font-semibold"
+                  >
                     REGISTER
                   </button>
                 </div>
-                <div className="mt-4 flex justify-center text-center">
+                <div className="mt-2 flex justify-center text-center">
                   <p className="text-sm font-medium mr-2 text-gray-900">
                     Already have an account{" "}
                   </p>
@@ -175,8 +164,8 @@ const Register = () => {
                     Login
                   </Link>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
 
             <div className="md:w-1/2">
               <img src={Signlogo} alt="img" className="w-full h-[430px]" />

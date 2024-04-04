@@ -12,12 +12,12 @@ const Navbar = () => {
   const closeModal = useModalStore((state) => state.closeModal);
   const openModal = useModalStore((state) => state.openModal);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setColorIndex((colorIndex + 1) % colors.length);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [colorIndex]);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setColorIndex((colorIndex + 1) % colors.length);
+  //   }, 1000);
+  //   return () => clearInterval(interval);
+  // }, [colorIndex]);
 
   const getColor = () => {
     return colors[colorIndex];
@@ -45,29 +45,25 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="flex justify-between text-center bg-gray-100">
-        <div className="flex pb-5">
-          <img
-            src={Logo}
-            alt="logo"
-            className="rounded-full h-[55px] ml-2 relative top-2 left-5"
-          />
+      <nav className="flex justify-between text-center bg-gray-100 items-center p-2">
+        <div className="flex p-2 items-center gap-2">
+          <img src={Logo} alt="logo" className="rounded-full h-[55px] ml-2 " />
           <Link
             to={"/"}
-            className="left-3 relative top-7 font-bold font-serif text-2xl hover:text-blue-800"
+            className="font-bold font-serif text-2xl hover:text-blue-800"
           >
             Rent<span className="text-blue-800 hover:text-gray-900">Track</span>
           </Link>
         </div>
-        <div className="font-semibold text-xl font-serif relative right-5 top-7 hover:text-gray-800">
-          <Link
+        <div className="flex font-semibold text-xl font-serif  hover:text-gray-800 mr-8 gap-4">
+          {/* <Link
             to={"/rent-data"}
             style={{ color: getColor() }}
             className="mr-9"
           >
             Rent Collection
-          </Link> 
-        
+          </Link> */}
+
           {buildingFloors ? (
             <Link
               to={"/my-floor"}
@@ -76,13 +72,19 @@ const Navbar = () => {
             >
               My Floors
             </Link>
-          ) : null}
+          ) : (
+            <span
+              className="cursor-pointer mx-1 text-blue-700"
+              onClick={openModal}
+            >
+              Register building
+            </span>
+          )}
 
-        
           <Link to={"/services"} style={{ color: getColor() }}>
             Services
           </Link>
-          <Link to={"/login"} className="ml-4" style={{ color: getColor() }}>
+          <Link to={"/login"} className="" style={{ color: getColor() }}>
             Login
           </Link>
         </div>

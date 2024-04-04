@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from '../../assets/rentlogo.png'
+import Logo from "../../assets/rentlogo.png";
+import * as apiClient from "../../api-client";
+
 const SideNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const logout = async () => {
+    const response = await apiClient.logout();
+    console.log(response);
   };
 
   return (
@@ -27,9 +34,9 @@ const SideNavbar = () => {
             />
           </svg>
         </button>
-        <div className={`${isOpen ? 'block' : 'hidden'} lg:block`}>
+        <div className={`${isOpen ? "block" : "hidden"} lg:block`}>
           <div className="relative top-2">
-            <img src={Logo} alt="Logo" className="p-3 rounded-full h-24 w-24"/>
+            <img src={Logo} alt="Logo" className="p-3 rounded-full h-24 w-24" />
           </div>
           <nav className="mt-7 font-serif font-semibold md:text-lg">
             <ul>
@@ -67,6 +74,15 @@ const SideNavbar = () => {
                   onClick={toggleMenu}
                 >
                   Add Payment
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/"
+                  className="block py-2 px-4 hover:bg-stone-900 transition duration-300 mb-1"
+                  onClick={logout}
+                >
+                  logout
                 </Link>
               </li>
             </ul>

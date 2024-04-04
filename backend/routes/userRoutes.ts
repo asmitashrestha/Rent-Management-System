@@ -9,6 +9,6 @@ import {
 
 router.post("/register", validateRegistration, register);
 router.post("/login", validateLogin, login);
-router.post("/logout", logout);
+router.get("/logout", logout);
 
 export default router;
