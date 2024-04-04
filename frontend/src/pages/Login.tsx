@@ -31,7 +31,7 @@ const Login = () => {
         autoClose: 500, // Adjust the duration the toast is displayed
         hideProgressBar: false,
       });
-      navigate(location.state?.from?.pathname || "/");
+      navigate(location.state?.from?.pathname || "/my-floor");
     },
     
     onError: (error: any) => {

@@ -38,7 +38,7 @@ const App = () => {
         <Route path="/my-floor" element={<MyFloor/>}/>
         <Route path="/floor-summary" element={<FloorSummary/>}/>
         <Route path="/fetch-bill/:id" element={<FetchBill/>}/>
-        <Route path="/add-payment" element={<Payment />} />
+        <Route path="/add-payment/:id" element={<Payment />} />
       </Routes>
     </div>
   );

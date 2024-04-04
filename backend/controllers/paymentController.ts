@@ -21,8 +21,13 @@ export const addPayment = async (req: Request, res: Response) => {
     if (!response) {
       return res.status(400).json({ message: "Something went wrong" });
     }
+console.log("id",id);
+console.log("paidamount",paidAmount);
+
 
     const customer = await getCustomerById(id);
+    console.log("cstomer",customer);
+    
     const { billAmount } = customer.dataValues;
     const paid = parseInt(paidAmount, 10);
     const remaining = billAmount - paid;

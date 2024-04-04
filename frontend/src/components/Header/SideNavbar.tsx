@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from '../../assets/rentlogo.png'
 const SideNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate()
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
+ const logout = ()=>{
+  navigate('/')
+ }
   return (
     <div className="lg:w-64 bg-gray-950 rounded-r-xl text-white h-full fixed top-0 left-0 z-50">
       <div className="p-4">
@@ -62,12 +65,20 @@ const SideNavbar = () => {
               </li>
               <li>
                 <Link
-                  to="/add-payment"
+                  to="/add-payment/:id"
                   className="block py-2 px-4 hover:bg-stone-900 transition duration-300 mb-1"
                   onClick={toggleMenu}
                 >
                   Add Payment
                 </Link>
+              </li>
+              <li>
+                <button
+                  className="block py-2 mt-40 px-4 hover:bg-stone-900 transition duration-300 mb-1 text-xl"
+                  onClick={logout}
+                >
+                  Sign Out
+                </button>
               </li>
             </ul>
           </nav>
@@ -78,3 +89,4 @@ const SideNavbar = () => {
 };
 
 export default SideNavbar;
+

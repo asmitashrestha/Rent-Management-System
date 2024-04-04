@@ -51,15 +51,15 @@ const BillForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-stone-100">
+    <div className="flex justify-center items-center min-h-screen bg-img1">
       <div className="max-w-md w-full p-6 bg-white rounded-md shadow-xl shadow-gray-500">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
+        <h2 className="text-2xl font-bold text-center text-stone-900 mb-4">
           Add Bill
         </h2>
         <form onSubmit={handleSubmit}>
           {/* Your form inputs */}
           <div className="mb-4">
-            <label className="block text-gray-700 font-semibold mb-2 text-lg">
+            <label className="block text-amber-800 font-semibold mb-2 text-lg">
               Electricity Charges:
             </label>
             <input
@@ -67,11 +67,13 @@ const BillForm = () => {
               name="electricityCharges"
               value={formData.electricityCharges}
               onChange={handleChange}
-              className="p-3 w-full rounded-lg shadow-stone-500 shadow-md text-white focus:outline-none focus:ring focus:ring-stone-400 bg-stone-950 border-none "
+              className="p-3 w-full rounded-lg shadow-stone-500 shadow-md
+               text-stone-900 focus:outline-none focus:ring focus:ring-stone-400
+                bg-primary-bg border-none "
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 font-semibold  text-lg">
+            <label className="block text-amber-800 font-semibold  text-lg">
               Water Charges:
             </label>
             <input
@@ -79,11 +81,14 @@ const BillForm = () => {
               name="waterCharges"
               value={formData.waterCharges}
               onChange={handleChange}
-              className="p-3 w-full rounded-lg shadow-stone-500 shadow-md text-white focus:outline-none focus:ring focus:ring-stone-400 bg-stone-950 border-none "
+              className="p-3 w-full rounded-lg
+               shadow-stone-500 shadow-md bg-primary-bg 
+               text-stone-900 focus:outline-none focus:ring
+                focus:ring-stone-400  border-none "
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 font-semibold  text-lg">
+            <label className="block text-amber-800 font-semibold  text-lg">
               Internet Charges:
             </label>
             <input
@@ -91,11 +96,12 @@ const BillForm = () => {
               name="internetCharges"
               value={formData.internetCharges}
               onChange={handleChange}
-              className="p-3 w-full rounded-lg shadow-stone-500 shadow-md text-white focus:outline-none focus:ring focus:ring-stone-400 bg-stone-950 border-none "
+              className="p-3 w-full rounded-lg shadow-stone-500 shadow-md
+               text-stone-900 focus:outline-none focus:ring focus:ring-stone-400 bg-primary-bg  border-none "
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 font-semibold  text-lg">
+            <label className="block text-amber-800 font-semibold  text-lg">
               Others:
             </label>
             <input
@@ -103,7 +109,7 @@ const BillForm = () => {
               name="others"
               value={formData.others}
               onChange={handleChange}
-              className="p-3 w-full rounded-lg shadow-stone-500 shadow-md text-white focus:outline-none focus:ring focus:ring-stone-400 bg-stone-950 border-none "
+              className="p-3 w-full rounded-lg   text-stone-900 focus:outline-none focus:ring focus:ring-stone-400 bg-primary-bg  border-none "
             />
           </div>
           <div className="flex justify-between">
@@ -115,7 +121,7 @@ const BillForm = () => {
             </button>
             <button
               type="submit"
-              className="bg-blue-950 text-white p-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring focus:ring-blue-400 font-semibold"
+              className="bg-amber-950 text-white p-4 rounded-md hover:bg-amber-800 focus:outline-none focus:ring focus:ring-blue-400 font-semibold"
             >
               Add Bill
             </button>

@@ -1,69 +1,64 @@
-import { Link } from "react-router-dom";
-import { BsFacebook, BsInstagram } from "react-icons/bs";
-import { BiLogoGmail, BiLocationPlus } from "react-icons/bi";
-import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
+import { AiOutlineMail } from 'react-icons/ai';
+import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
+
 const Footer = () => {
   return (
-    <>
-      <div className="bg-gray-950">
-        <div className="flex justify-between ml-16 mt-11 ">
-          <div className="mb-5 p-3">
-            <h1>
-              <span className="text-white text-2xl font-serif font-semibold">
-                Rent
-              </span>{" "}
-              <span className="text-blue-400 text-2xl font-bold font-serif">
-                Track
-              </span>
-            </h1>
-            <p className="text-justify mt-4 text-md text-white font-serif">
-              Lorem ipsum dolor sit amet consectetur <br /> adipisicing elit.
-              Expedita, nam.
-            </p>
-          </div>
-          <div className="icons flex mt-9 text-white  mb-5">
-            <p>
-              <p className="mr-4  p-7 text-[40px] text-blue-700  rounded-full">
-                <BsFacebook />
-              </p>
-            </p>
-            <p>
-              <p className="mr-4 p-7 text-[40px] text-pink-800 rounded-full">
-                <BsInstagram />
-              </p>
-            </p>
-            <p>
-              <p className="mr-4 p-7 text-[40px] rounded-full text-yellow-800">
-                <BiLogoGmail />
-              </p>
-            </p>
-          </div>
-
-          <div className="font-serif mr-20 p-4">
-            <h1 className="text-2xl font-bold justify-center text-blue-600 ">
-              Discover
-            </h1>
-            <div className=" ml-4 mt-2 text-white ">
-              <Link to="/" className="relative flex justify-center text-center">
-                Home
-              </Link>
-              <Link
-                to="/about"
-                className="relative flex justify-center text-center"
-              >
-                About
-              </Link>
-              <Link
-                to="/register"
-                className="relative flex justify-center text-center"
-              >
-                Register
-              </Link>
-            </div>
-          </div>
+    <footer className="bg-gray-950 py-6 h-[170px]">
+      <div className="container mx-auto px-4 flex flex-col 
+      md:flex-row justify-center items-center">
+        <div className="flex justify-center lg:mr-8 mb-4 lg:mb-0">
+          <a
+            href="mailto:youremail@example.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mr-4 hover:bg-amber-200 p-3 
+            rounded-full bg-white text-black font-semibold"
+          >
+            <AiOutlineMail size={24} />
+          </a>
+          <a
+            href="https://www.facebook.com/yourfacebookpage"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mr-4 p-3 
+            rounded-full bg-white text-black font-semibold hover:bg-amber-200"
+          >
+            <FaFacebookF size={24} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/yourlinkedinprofile"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mr-4 hover:bg-amber-200 p-3 
+            rounded-full bg-white text-black font-semibold"
+          >
+            <FaLinkedinIn size={24} />
+          </a>
+        </div>
+        <div className="text-center lg:text-right relative top-10">
+          <p className="text-white text-sm lg:text-base mb-2 lg:mb-0">
+            <a
+              href="/services"
+              className="text-white hover:text-amber-600 mr-4 font-serif
+              text-lg"
+            >
+              Services
+            </a>
+            <a
+              href="/"
+              className="text-white hover:text-amber-600 mr-4 font-serif
+              text-lg"
+            >
+              Home
+            </a>
+          </p> 
+          <p className="text-white text-lg lg:text-lg flex 
+          justify-center pt-7 font-serif hover:text-amber-600 pb-7 mb-0">
+            © 2024 developed and designed by Asmita Shrestha & Shiraj Shrestha.
+          </p>
         </div>
       </div>
-    </>
+    </footer>
   );
 };
 

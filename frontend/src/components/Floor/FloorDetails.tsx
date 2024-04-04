@@ -45,7 +45,7 @@ const FloorDetails = () => {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               placeholder="Enter price..."
-              className="block outline-none w-full mt-2 p-3 rounded-md bg-stone-900 text-cyan-100 font-semibold"
+              className="block outline-none w-full mt-2 p-3 rounded-md bg-primary-bg text-stone-900 font-semibold"
             />
           </div>
           <button
@@ -62,4 +62,3 @@ const FloorDetails = () => {
 };
 
 export default FloorDetails;
-

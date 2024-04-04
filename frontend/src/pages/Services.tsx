@@ -2,11 +2,11 @@ import Service from '../components/Service/Service'
 
 const Services = () => {
   return (
-    <div>
+    <div className='relative mr-40 w-full'>
       <div className='bg-white'>
         <h2 className='flex justify-center font-bold text-3xl
         font-serif pt-9 text-blue-900 hover:text-cyan-950 '>Our Services</h2>
-        <div className='flex flex-wrap mt-10 justify-center'>
+        <div className='flex flex-wrap mt-8 justify-center'>
           <Service title={"Storage of previous rent"} description={"The system securely stores historical rent data, allowing users to access and analyze trends over time."}/>
           <Service title={"Data retrieval"} description={' Users can easily retrieve specific rent data from the system, enabling quick access to relevant information.'}/>
           <Service title={"Customizable parameters"} description={' Users can customize parameters for data collection and analysis based on their specific needs and preferences.'}/>

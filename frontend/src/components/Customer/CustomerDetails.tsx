@@ -35,7 +35,7 @@ const CustomerDetails = () => {
 
   return (
     <div>
-      <div className="bg-img2 h-screen bg-cover bg-center flex justify-center items-center">
+      <div className=" h-screen bg-cover bg-center flex justify-center items-center">
         {!showForm ? (
           <div>
             <p className="font-bold text-3xl text-green-950 font-serif p-4">Customer Details</p>
@@ -66,7 +66,8 @@ const CustomerDetails = () => {
                       value={customerName}
                       onChange={(e) => setCustomerName(e.target.value)}
                       placeholder="Enter name..."
-                      className="outline-none p-3 rounded-md bg-primary-bg md:ml-2 font-semibold flex-grow"
+                      className="outline-none p-3 rounded-md bg-primary-bg md:ml-2
+                       font-semibold flex-grow"
                     />
                   </div>
                 </div>
@@ -80,7 +81,7 @@ const CustomerDetails = () => {
                   </button>
                   <button
                     type="submit"
-                    className="relative top-2 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-950"
+                    className="relative top-2 px-4 py-2 bg-amber-900 text-white rounded-md hover:bg-amber-950"
                   >
                     Submit
                   </button>

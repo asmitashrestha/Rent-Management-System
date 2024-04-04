@@ -41,15 +41,15 @@ const MyFloor = () => {
   const floorNumbers: number[] = Array.from(
     { length: buildingFloors },
     (_, index) => index + 1
-  );
+  ).reverse(); // Reverse the array
 
   return (
     <>
     <SideNavbar/>
-    
-      <div className="flex justify-center items-center text-center mt-16">
-        <div className="md:py-5 md:px-7 p-4 rounded shadow-xl shadow-gray-600 bg-stone-950">
-          <p className="text-cyan-50 font-semibold text-2xl font-serif">
+    <div className="bg-img1 h-screen bg-cover bg-center flex justify-center items-center">
+       <div className="flex justify-center items-center text-center mt-16 ">
+        <div className="md:py-5 md:px-7 p-4 rounded shadow-xl shadow-gray-600 bg-white">
+          <p className="text-stone-800 font-semibold text-2xl font-serif">
             My Floor
           </p>
           <ul className="items-center justify-center text-center py-7">
@@ -60,7 +60,7 @@ const MyFloor = () => {
                 className="cursor-pointer w-[400px] md:w-[500px] flex justify-center items-center text-center pl-12 md:px-9"
               >
                 <div
-                  className="flex text-center justify-center items-center my-5 text-xl font-semibold text-amber-900 font-serif bg-slate-300 w-full py-2 rounded-md shadow-gray-100 
+                  className="flex text-center justify-center items-center my-5 text-xl font-semibold text-amber-900 font-serif bg-primary-bg w-full py-2 rounded-md shadow-gray-100 
             shadow-sm hover:bg-cyan-50"
                 >
                   Floor {floor}
@@ -80,6 +80,8 @@ const MyFloor = () => {
           </ul>
         </div>
       </div>
+      </div>
+     
     </>
   );
 };

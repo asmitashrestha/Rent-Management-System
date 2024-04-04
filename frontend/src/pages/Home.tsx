@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Header/Navbar";
 import Services from "./Services";
 import Footer from "../components/Footer/Footer";
@@ -7,9 +7,12 @@ import Footer from "../components/Footer/Footer";
 const Home = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [showLink, setShowLink] = useState(false);
+  const navigate = useNavigate()
   const textToShow =
     "Collecting house rent data: Insights for informed housing decisions ahead.";
-
+    const handleSubmit = () => {
+      navigate('/services'); // Use history.push for navigation
+    };
   useEffect(() => {
     const timer = setTimeout(() => {
       setTextIndex(textIndex + 1);
@@ -30,16 +33,11 @@ const Home = () => {
         <p className="para relative top-20 p-[105px] text-xl text-gray-900 font-semibold font-serif flex justify-center text-center">
           {textToShow.slice(0, textIndex)}
         </p>
-        {showLink && (
-          <div className="flex justify-center text-center">
-            <Link
-              to="/login"
-              className="underline text-lg text-blue-800 hover:text-gray-900 mr-1 font-semibold"
-            >
-              Click here, to know more
-            </Link>
-          </div>
-        )}
+        <div className="flex justify-center text-center">
+          <button 
+          onClick={handleSubmit}
+          className="bg-blue-700 p-3 text-white shadow-stone-950 shadow-xl text-lg rounded-md hover:bg-blue-100">Learn more</button>
+        </div>
       </div>
       <Services />
       <Footer />

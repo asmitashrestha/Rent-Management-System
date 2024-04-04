@@ -11,22 +11,12 @@ export const register = async (formData: RegisterFormData) => {
     },
     body: JSON.stringify(formData),
   });
-  console.log("register failed");
 
   if (!response.ok) {
     throw new Error("Something went wrong");
   }
-
   const responseBody = await response.json();
-  const token = responseBody.token;
-
-  // Make sure token is present in response body
-  if (!token) {
-    throw new Error("Token not found in response");
-  }
-
   localStorage.setItem("userData", JSON.stringify(responseBody));
-  console.log("Token register", token);
 
   return responseBody;
 };
@@ -283,5 +273,24 @@ export const addBillDetails = async (
   } catch (error: any) {
     console.error("Error adding building", error.message);
     throw error;
+  }
+};
+
+export const fetchBillDetails = async (id: number, cId: number) => {
+  try {
+    const response = await fetch(`http://localhost:8000/bill/${id}`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ cId }),
+    });
+    if (!response.ok) {
+      throw new Error("Something went wrong while fetching bill");
+    }
+    return response.json();
+  } catch (error: any) {
+    console.log("Error fetching the bill", error.message);
   }
 };

@@ -55,10 +55,11 @@ const FloorSummary = () => {
   return (
     <>
     <SideNavbar/> 
-    <div className="flex justify-center  items-center mt-14">
+    <div className="bg-img1 h-screen bg-cover bg-center flex justify-center items-center">
+      <div className="flex justify-center  items-center mt-14">
       <div className="">
         <div className="mb-2">
-          <label className="text-lg font-semibold font-serif text-gray-800">
+          <label className="text-lg font-semibold font-serif text-amber-800">
             Enter floor number :{" "}
           </label>
         </div>
@@ -67,7 +68,8 @@ const FloorSummary = () => {
             type="number"
             value={floorNumber}
             onChange={handleChange}
-            className="bg-black px-7 text-white py-3 rounded shadow-stone-100 shadow-lg"
+            className="bg-primary-bg px-7 w-[370px] text-stone-950 py-3
+             rounded shadow-stone-900 shadow-lg"
           />
         </div>
 
@@ -75,24 +77,36 @@ const FloorSummary = () => {
         {error && <p>Error: {error}</p>}
 
         {floorData && (
-          <div className="mt-5 shadow-stone-500 rounded shadow-2xl bg-stone-950 p-5 text-white text-lg">
-            <p className="mb-2">
-              <span className="text-lg font-semibold mr-1">
+          <div className=" mt-5 shadow-stone-500 rounded shadow-2xl bg-white p-10 text-stone-950 text-lg">
+            <div className="mb-2 mt-3 w-[289px]">
+              <p className="bg-gray-300 p-2 rounded shadow-stone-900 shadow-xl flex justify-between pr-20">
+  <span className="text-lg font-semibold mr-1">
                 Floor Number :
               </span>{" "}
+             <p className="text-amber-800 font-semibold">
               {floorData.floorNumber}
-            </p>
-            <p>
-              <span className="text-lg font-semibold mr-1">
+              </p> 
+              </p>
+            
+            </div>
+            <div className="mb-2 mt-3">
+               <p className="bg-gray-300 p-2 rounded shadow-stone-900 shadow-xl flex justify-between pr-20">
+              <span className="text-lg font-semibold mr-1 font-semiboldf">
                 Rent:
               </span>{" "}
-              {floorData.price}
+             <p className="text-amber-800 font-semibold">
+               {floorData.price}
+              </p>
             </p>
+            </div>
+           
             {/* Add more details as needed */}
           </div>
         )}
       </div>
     </div>
+      </div>
+    
     </>
    
   );
